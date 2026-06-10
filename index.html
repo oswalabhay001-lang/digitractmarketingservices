@@ -2,948 +2,1031 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Digitract — Where Brands Gain Traction</title>
-<meta name="description" content="Digitract is a creative digital marketing agency in India. Branding, Website Design, Lead Generation, Social Media Marketing.">
-<meta name="keywords" content="Digital Marketing Agency India, Website Design Services, Branding Agency, Lead Generation, Social Media Marketing">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Digitract — Performance Marketing & Digital Growth</title>
+<meta name="description" content="Digitract is India's leading performance marketing agency. SEO, Meta Ads, Google Ads, Branding, Website Development. 100+ brands scaled across India.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
+/* ─── APPLE DESIGN SYSTEM ─── */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{font-size:16px;scroll-behavior:smooth}
+html{font-size:16px;scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
 :root{
-  --bg:#ffffff;
-  --bg2:#f7f6f2;
-  --bg3:#f0ede6;
-  --ink:#0a0a0a;
-  --ink2:#1a1a1a;
-  --muted:#888880;
-  --dim:#bbb;
-  --border:#e0ddd6;
-  --border2:#c8c4bc;
-  --accent:#0a0a0a;
-  --hi:#d4e84a; /* highlight yellow used sparingly */
+  --apple-bg:#f5f5f7;
+  --apple-white:#ffffff;
+  --apple-black:#1d1d1f;
+  --apple-gray:#6e6e73;
+  --apple-light-gray:#f5f5f7;
+  --apple-mid-gray:#e8e8ed;
+  --apple-blue:#0071e3;
+  --apple-blue-hover:#0077ed;
+  --apple-nav-bg:rgba(255,255,255,0.85);
+  --apple-font:-apple-system,BlinkMacSystemFont,'SF Pro Display','SF Pro Text','Helvetica Neue',Arial,sans-serif;
+  --tile-radius:18px;
+  --max-width:1024px;
 }
-body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--ink);overflow-x:hidden;cursor:none}
+body{font-family:var(--apple-font);background:var(--apple-bg);color:var(--apple-black);overflow-x:hidden}
+a{text-decoration:none;color:var(--apple-blue)}
+a:hover{text-decoration:underline}
+img{display:block;max-width:100%}
 
-/* ── CURSOR ── */
-#cur{position:fixed;width:8px;height:8px;background:var(--ink);border-radius:50%;pointer-events:none;z-index:9999;top:0;left:0;transform:translate(-50%,-50%);transition:width .25s,height .25s,background .25s,transform .1s}
-#cur-outer{position:fixed;width:40px;height:40px;border:1px solid rgba(10,10,10,.25);border-radius:50%;pointer-events:none;z-index:9998;top:0;left:0;transform:translate(-50%,-50%);transition:border-color .3s}
-body.hovering #cur{width:48px;height:48px;background:rgba(10,10,10,.07);border:1px solid rgba(10,10,10,.4)}
-body.hovering #cur-outer{opacity:0}
+/* ─── GLOBAL NAV (Apple exact) ─── */
+#gnav{
+  position:fixed;top:0;left:0;right:0;z-index:9000;
+  background:var(--apple-nav-bg);
+  backdrop-filter:saturate(180%) blur(20px);
+  -webkit-backdrop-filter:saturate(180%) blur(20px);
+  border-bottom:1px solid rgba(0,0,0,.08);
+  height:44px;
+  display:flex;align-items:center;justify-content:center;
+}
+.gnav-inner{
+  max-width:1024px;width:100%;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 22px;
+}
+.gnav-logo{
+  font-size:1.5rem;font-weight:700;color:var(--apple-black);letter-spacing:-.5px;
+  display:flex;align-items:center;gap:1px;
+}
+.gnav-logo span{color:var(--apple-blue)}
+.gnav-links{display:flex;align-items:center;gap:0;list-style:none}
+.gnav-links a{
+  font-size:.72rem;font-weight:400;color:var(--apple-black);opacity:.8;
+  padding:0 11px;letter-spacing:.01em;white-space:nowrap;transition:opacity .2s;
+}
+.gnav-links a:hover{opacity:1;text-decoration:none}
+.gnav-icons{display:flex;align-items:center;gap:4px}
+.gnav-icon-btn{
+  width:30px;height:30px;border:none;background:transparent;cursor:pointer;
+  color:var(--apple-black);font-size:1rem;display:flex;align-items:center;justify-content:center;
+  border-radius:50%;transition:background .2s;opacity:.8;
+}
+.gnav-icon-btn:hover{background:rgba(0,0,0,.06);opacity:1}
+.ham-btn{display:none;flex-direction:column;gap:4.5px;cursor:pointer;padding:4px;background:none;border:none}
+.ham-btn span{width:17px;height:1.5px;background:var(--apple-black);display:block;border-radius:2px;transition:all .3s}
 
-/* ── PAGE TRANSITION OVERLAY ── */
-#overlay{position:fixed;inset:0;background:var(--ink);z-index:9990;transform-origin:bottom;transform:scaleY(1);animation:overlayOut 1s cubic-bezier(.76,0,.24,1) .3s forwards}
-@keyframes overlayOut{to{transform:scaleY(0)}}
+/* ─── PROMO BANNER (Apple top strip) ─── */
+.promo-banner{
+  margin-top:44px;background:#fff;
+  padding:10px 20px;text-align:center;
+  border-bottom:1px solid var(--apple-mid-gray);
+  font-size:.75rem;color:var(--apple-black);letter-spacing:-.01em;
+}
+.promo-banner a{color:var(--apple-blue);font-weight:500}
+.promo-banner a:hover{text-decoration:underline}
 
-/* ── LOADER ── */
-#loader{position:fixed;inset:0;background:var(--ink);z-index:9995;display:flex;align-items:center;justify-content:center;transition:opacity .6s ease,visibility .6s}
-#loader.out{opacity:0;visibility:hidden;pointer-events:none}
-.ld-logo{font-family:'Playfair Display',serif;font-size:clamp(2.5rem,6vw,5rem);font-weight:900;color:#fff;letter-spacing:-2px;overflow:hidden;display:flex}
-.ld-logo span{display:inline-block;opacity:0;transform:translateY(80px);animation:charUp .7s cubic-bezier(.16,1,.3,1) forwards}
-.ld-logo span:nth-child(1){animation-delay:.05s}
-.ld-logo span:nth-child(2){animation-delay:.1s}
-.ld-logo span:nth-child(3){animation-delay:.15s}
-.ld-logo span:nth-child(4){animation-delay:.2s}
-.ld-logo span:nth-child(5){animation-delay:.25s}
-.ld-logo span:nth-child(6){animation-delay:.3s}
-.ld-logo span:nth-child(7){animation-delay:.35s}
-.ld-logo span:nth-child(8){animation-delay:.4s}
-.ld-logo span:nth-child(9){animation-delay:.45s}
-@keyframes charUp{to{opacity:1;transform:translateY(0)}}
-.ld-line{width:0;height:1px;background:#fff;opacity:.3;margin:24px auto 0;animation:ldLine 1.6s ease forwards .6s}
-@keyframes ldLine{to{width:200px}}
-.ld-pct{color:rgba(255,255,255,.35);font-size:.72rem;letter-spacing:3px;margin-top:12px;text-align:center;animation:pctFade 1.8s ease forwards .4s;opacity:0}
-@keyframes pctFade{to{opacity:1}}
+/* ─── APPLE GRID LAYOUT ─── */
+.apple-grid{display:flex;flex-direction:column;gap:12px;padding:12px;background:var(--apple-bg)}
 
-/* ── NAV ── */
-nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:0 6%;height:72px;display:flex;align-items:center;justify-content:space-between;mix-blend-mode:normal;transition:all .4s}
-nav.scrolled{background:rgba(255,255,255,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
-.nav-logo{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:900;color:var(--ink);text-decoration:none;letter-spacing:-0.5px;position:relative;overflow:hidden}
-.nav-logo::after{content:attr(data-text);position:absolute;left:0;top:0;transform:translateY(100%);transition:transform .4s cubic-bezier(.76,0,.24,1)}
-.nav-logo:hover span{transform:translateY(-100%)}
-.nav-logo:hover::after{transform:translateY(0)}
-.nav-logo span{display:block;transition:transform .4s cubic-bezier(.76,0,.24,1)}
-.nav-center{display:flex;gap:36px;list-style:none;position:absolute;left:50%;transform:translateX(-50%)}
-.nav-center a{color:var(--muted);text-decoration:none;font-size:.78rem;font-weight:400;letter-spacing:.8px;text-transform:uppercase;transition:color .2s;position:relative}
-.nav-center a::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:1px;background:var(--ink);transition:width .3s}
-.nav-center a:hover{color:var(--ink)}
-.nav-center a:hover::after{width:100%}
-.nav-cta{padding:10px 24px;background:var(--ink);color:#fff;font-size:.75rem;font-weight:500;border:none;border-radius:40px;cursor:pointer;text-decoration:none;letter-spacing:.5px;text-transform:uppercase;transition:all .3s;position:relative;overflow:hidden}
-.nav-cta::before{content:'';position:absolute;inset:0;background:#333;transform:translateY(100%);transition:transform .35s cubic-bezier(.76,0,.24,1);border-radius:40px}
-.nav-cta:hover::before{transform:translateY(0)}
-.nav-cta span{position:relative;z-index:1}
-.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
-.hamburger span{width:22px;height:1px;background:var(--ink);display:block;transition:all .3s}
+/* ─── TILE (Apple product card) ─── */
+.tile{
+  border-radius:var(--tile-radius);
+  overflow:hidden;
+  position:relative;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:flex-start;
+  text-align:center;
+  padding:52px 40px 40px;
+  min-height:500px;
+}
+.tile-row{display:grid;gap:12px}
+.tile-row-2{grid-template-columns:1fr 1fr}
+.tile-row-3{grid-template-columns:1fr 1fr 1fr}
 
-/* ── SECTIONS ── */
-section{position:relative}
-.wrap{max-width:1320px;margin:0 auto;padding:0 6%}
+/* tile themes */
+.tile-dark{background:#1d1d1f;color:#f5f5f7}
+.tile-dark .tile-eyebrow{color:rgba(245,245,247,.6)}
+.tile-dark .tile-title{color:#f5f5f7}
+.tile-dark .tile-sub{color:rgba(245,245,247,.7)}
+.tile-dark .tile-cta{color:#2997ff}
+.tile-dark .tile-cta-ghost{color:rgba(245,245,247,.9);border-color:rgba(245,245,247,.5)}
+.tile-dark .tile-cta-ghost:hover{border-color:#fff}
 
-/* ── HERO ── */
-#hero{min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:0 6% 80px;overflow:hidden;background:var(--bg)}
-.hero-top-bar{position:absolute;top:90px;left:6%;right:6%;display:flex;justify-content:space-between;align-items:flex-start;z-index:2}
-.hero-eyebrow{font-size:.7rem;letter-spacing:3px;text-transform:uppercase;color:var(--muted);overflow:hidden}
-.hero-eyebrow span{display:block;transform:translateY(20px);opacity:0;animation:fUp .7s ease .9s forwards}
-.hero-status{display:flex;align-items:center;gap:8px;font-size:.7rem;color:var(--muted);overflow:hidden}
-.hero-status span{display:block;transform:translateY(20px);opacity:0;animation:fUp .7s ease 1s forwards}
-.hero-dot{width:5px;height:5px;background:#22c55e;border-radius:50%;animation:blink 2s infinite;flex-shrink:0}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
-@keyframes fUp{to{transform:translateY(0);opacity:1}}
+.tile-white{background:#ffffff;color:#1d1d1f}
+.tile-off{background:#f5f5f7;color:#1d1d1f}
+.tile-blue{background:#0071e3;color:#fff}
+.tile-blue .tile-eyebrow{color:rgba(255,255,255,.75)}
+.tile-blue .tile-title{color:#fff}
+.tile-blue .tile-sub{color:rgba(255,255,255,.8)}
+.tile-blue .tile-cta{color:#fff;font-weight:600}
+.tile-indigo{background:#1b2541;color:#fff}
+.tile-indigo .tile-eyebrow{color:rgba(255,255,255,.6)}
+.tile-indigo .tile-title{color:#fff}
+.tile-indigo .tile-sub{color:rgba(255,255,255,.72)}
+.tile-indigo .tile-cta{color:#6eb4f7}
+.tile-green{background:#1a3a1a;color:#fff}
+.tile-green .tile-eyebrow{color:rgba(255,255,255,.6)}
+.tile-green .tile-title{color:#fff}
+.tile-green .tile-sub{color:rgba(255,255,255,.72)}
+.tile-green .tile-cta{color:#72e09e}
+.tile-warm{background:#fbf5ef;color:#1d1d1f}
+.tile-orange{background:#ff6900;color:#fff}
+.tile-orange .tile-eyebrow{color:rgba(255,255,255,.8)}
+.tile-orange .tile-title{color:#fff}
+.tile-orange .tile-sub{color:rgba(255,255,255,.85)}
+.tile-orange .tile-cta{color:#fff;font-weight:600}
 
-.hero-headline{position:relative;z-index:2}
-.hero-h1{font-family:'Playfair Display',serif;font-size:clamp(4rem,11vw,11rem);font-weight:900;line-height:.9;letter-spacing:-4px;color:var(--ink)}
-.hl{display:block;overflow:hidden;padding-bottom:.05em}
-.hl span{display:block;transform:translateY(110%);opacity:0}
-.hl:nth-child(1) span{animation:slideUp 1s cubic-bezier(.16,1,.3,1) .5s forwards}
-.hl:nth-child(2) span{animation:slideUp 1s cubic-bezier(.16,1,.3,1) .65s forwards}
-.hl:nth-child(3) span{animation:slideUp 1s cubic-bezier(.16,1,.3,1) .8s forwards}
-.hl em{font-style:italic;color:var(--ink)}
-@keyframes slideUp{to{transform:translateY(0);opacity:1}}
+/* tile typography — Apple exact */
+.tile-eyebrow{font-size:.82rem;font-weight:600;letter-spacing:.03em;text-transform:uppercase;margin-bottom:8px;opacity:.85}
+.tile-title{font-size:clamp(2rem,4.5vw,4.5rem);font-weight:700;letter-spacing:-.03em;line-height:1.05;margin-bottom:12px}
+.tile-sub{font-size:clamp(.88rem,1.4vw,1.25rem);font-weight:400;line-height:1.55;letter-spacing:-.01em;max-width:560px;margin:0 auto 20px}
+.tile-ctas{display:flex;gap:16px;align-items:center;justify-content:center;flex-wrap:wrap;margin-top:4px}
+.tile-cta{font-size:1rem;font-weight:400;letter-spacing:-.01em;transition:text-decoration .1s;display:inline-flex;align-items:center;gap:4px}
+.tile-cta:hover{text-decoration:underline}
+.tile-cta-ghost{
+  font-size:.82rem;font-weight:500;letter-spacing:-.01em;
+  padding:8px 18px;border:1.5px solid rgba(29,29,31,.4);border-radius:20px;
+  color:var(--apple-black);transition:border-color .2s;
+  display:inline-flex;align-items:center;gap:5px;
+}
+.tile-cta-ghost:hover{text-decoration:none;border-color:rgba(29,29,31,.8)}
+.tile-cta-filled{
+  font-size:.82rem;font-weight:500;
+  padding:8px 18px;background:var(--apple-blue);border-radius:20px;
+  color:#fff;transition:background .2s;
+  display:inline-flex;align-items:center;gap:5px;
+}
+.tile-cta-filled:hover{background:var(--apple-blue-hover);text-decoration:none}
+.tile-cta-white-filled{
+  font-size:.82rem;font-weight:500;
+  padding:8px 18px;background:#fff;border-radius:20px;
+  color:var(--apple-black);transition:opacity .2s;
+  display:inline-flex;align-items:center;gap:5px;
+}
+.tile-cta-white-filled:hover{opacity:.88;text-decoration:none}
 
-.hero-footer{position:relative;z-index:2;display:flex;justify-content:space-between;align-items:flex-end;margin-top:48px;flex-wrap:wrap;gap:24px}
-.hero-sub{font-size:clamp(.88rem,1.2vw,.98rem);color:var(--muted);max-width:340px;line-height:1.75;font-weight:300;overflow:hidden}
-.hero-sub p{transform:translateY(20px);opacity:0;animation:fUp .8s ease 1.1s forwards}
-.hero-actions{display:flex;gap:14px;align-items:center;overflow:hidden}
-.hero-actions div{transform:translateY(20px);opacity:0;animation:fUp .8s ease 1.2s forwards;display:flex;gap:14px}
-.btn-dark{padding:14px 32px;background:var(--ink);color:#fff;font-size:.82rem;font-weight:500;border:none;border-radius:40px;cursor:pointer;text-decoration:none;letter-spacing:.3px;transition:all .35s;display:inline-flex;align-items:center;gap:10px;position:relative;overflow:hidden}
-.btn-dark::before{content:'';position:absolute;inset:0;background:#333;border-radius:40px;transform:translateX(-100%);transition:transform .4s cubic-bezier(.76,0,.24,1)}
-.btn-dark:hover::before{transform:translateX(0)}
-.btn-dark span{position:relative;z-index:1}
-.btn-ghost{padding:14px 32px;background:transparent;color:var(--ink);font-size:.82rem;font-weight:400;border:1px solid var(--border2);border-radius:40px;cursor:pointer;text-decoration:none;letter-spacing:.3px;transition:all .3s;display:inline-flex;align-items:center;gap:10px}
-.btn-ghost:hover{border-color:var(--ink);background:var(--ink);color:#fff}
-.scroll-indicator{display:flex;flex-direction:column;align-items:center;gap:8px;overflow:hidden}
-.scroll-indicator div{transform:translateY(20px);opacity:0;animation:fUp .8s ease 1.4s forwards;display:flex;flex-direction:column;align-items:center;gap:8px}
-.si-line{width:1px;height:56px;background:linear-gradient(to bottom,var(--ink),transparent)}
-.si-label{font-size:.62rem;letter-spacing:3px;text-transform:uppercase;color:var(--muted);writing-mode:vertical-lr;animation:scrollDrop 2s ease-in-out infinite 2s}
-@keyframes scrollDrop{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+/* large hero tile */
+.tile-hero{min-height:600px;padding:52px 40px 40px}
+.tile-hero .tile-title{font-size:clamp(2.4rem,6vw,6rem)}
 
-/* ── HERO FLOATING VISUAL ── */
-.hero-visual-float{position:absolute;right:6%;top:50%;transform:translateY(-50%);z-index:1;opacity:0;animation:floatIn 1.2s ease 1s forwards}
-@keyframes floatIn{to{opacity:1}}
-.hvf-card{width:260px;background:var(--bg2);border:1px solid var(--border);border-radius:4px;padding:24px;position:relative}
-.hvf-card+.hvf-card{margin-top:12px}
-.hvf-label{font-size:.62rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
-.hvf-num{font-family:'Playfair Display',serif;font-size:2.8rem;font-weight:900;color:var(--ink);letter-spacing:-2px;line-height:1}
-.hvf-sub{font-size:.72rem;color:var(--muted);margin-top:4px}
-.hvf-bar-wrap{margin-top:14px;height:4px;background:var(--border);border-radius:2px;overflow:hidden}
-.hvf-bar{height:100%;background:var(--ink);border-radius:2px;animation:growBar 1.5s ease 1.5s forwards;width:0}
-@keyframes growBar{to{width:var(--w,70%)}}
-.hvf-sparkline{margin-top:14px;display:flex;align-items:flex-end;gap:3px;height:40px}
-.hvf-sparkline div{flex:1;background:var(--ink);border-radius:1px;opacity:.15;animation:growSpark .6s ease forwards}
-.hvf-sparkline div:nth-child(1){height:30%;animation-delay:1.6s}
-.hvf-sparkline div:nth-child(2){height:55%;animation-delay:1.7s}
-.hvf-sparkline div:nth-child(3){height:40%;animation-delay:1.8s}
-.hvf-sparkline div:nth-child(4){height:80%;animation-delay:1.9s}
-.hvf-sparkline div:nth-child(5){height:60%;animation-delay:2s}
-.hvf-sparkline div:nth-child(6){height:90%;animation-delay:2.1s}
-.hvf-sparkline div:nth-child(7){height:75%;animation-delay:2.2s}
-@keyframes growSpark{from{opacity:0;height:0%}to{opacity:var(--op,.15)}}
+/* tile visual area */
+.tile-visual{flex:1;display:flex;align-items:center;justify-content:center;width:100%;margin-top:36px;position:relative}
 
-/* ── MARQUEE ── */
-.marquee{border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:18px 0;overflow:hidden;background:var(--bg)}
-.marquee-inner{display:flex;width:max-content;animation:marquee 30s linear infinite}
-.marquee-inner:hover{animation-play-state:paused}
-.mi-item{display:flex;align-items:center;gap:48px;padding:0 48px;white-space:nowrap;font-size:.73rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted)}
-.mi-item b{color:var(--ink);font-weight:500}
-.mi-dot{width:3px;height:3px;background:var(--dim);border-radius:50%;flex-shrink:0}
-@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+/* ─── SVG / 3D VISUAL ELEMENTS ─── */
+.v-phone{width:180px;height:360px;background:linear-gradient(160deg,#2c2c2e,#1c1c1e);border-radius:40px;box-shadow:0 40px 80px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.15);position:relative;overflow:hidden;animation:phoneFloat 5s ease-in-out infinite}
+@keyframes phoneFloat{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-12px) rotate(1deg)}}
+.v-phone-screen{position:absolute;inset:8px;background:linear-gradient(160deg,#0071e3,#034dc7);border-radius:33px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:16px}
+.v-phone-notch{position:absolute;top:10px;left:50%;transform:translateX(-50%);width:60px;height:6px;background:#000;border-radius:3px;z-index:2}
+.v-pmetric{width:100%;background:rgba(255,255,255,.12);border-radius:8px;padding:8px 10px;border:1px solid rgba(255,255,255,.15)}
+.v-pmetric-label{font-size:7px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:3px}
+.v-pmetric-val{font-size:1.2rem;font-weight:700;color:#fff;line-height:1;letter-spacing:-.5px}
+.v-pmetric-chg{font-size:7px;color:#4cd964;margin-top:1px}
+.v-pbars{display:flex;align-items:flex-end;gap:2.5px;height:22px;margin-top:4px}
+.v-pbars div{flex:1;border-radius:1.5px 1.5px 0 0;background:rgba(255,255,255,.3)}
 
-/* ── WORK SECTION (SOHub style) ── */
-#work{padding:120px 0;background:var(--bg)}
-.work-header{display:grid;grid-template-columns:1fr 1fr;align-items:end;margin-bottom:72px;gap:40px}
-.work-title-group .sec-tag{font-size:.7rem;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:14px;display:block}
-.work-title-group h2{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,5vw,4.5rem);font-weight:900;letter-spacing:-2px;line-height:1;color:var(--ink)}
-.work-title-group h2 em{font-style:italic}
-.work-desc{font-size:.95rem;color:var(--muted);line-height:1.8;font-weight:300;max-width:380px;align-self:end}
-.work-grid{display:flex;flex-direction:column;gap:1px;background:var(--border)}
-.work-item{background:var(--bg);display:grid;grid-template-columns:80px 1fr 200px 60px;align-items:center;gap:32px;padding:32px 6%;cursor:pointer;transition:background .3s,padding .3s;position:relative;overflow:hidden}
-.work-item::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1px;background:var(--ink);transition:width .5s cubic-bezier(.4,0,.2,1)}
-.work-item:hover{background:var(--bg2);padding-left:calc(6% + 20px)}
-.work-item:hover::after{width:100%}
-.wi-num{font-size:.7rem;letter-spacing:2px;color:var(--dim);transition:color .3s}
-.work-item:hover .wi-num{color:var(--muted)}
-.wi-name{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,2.8vw,2.2rem);font-weight:700;letter-spacing:-0.5px;color:var(--ink);transition:letter-spacing .3s}
-.work-item:hover .wi-name{letter-spacing:0}
-.wi-tags{display:flex;gap:8px;flex-wrap:wrap}
-.wi-tag{font-size:.62rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);padding:5px 12px;border:1px solid var(--border);border-radius:40px;transition:all .3s}
-.work-item:hover .wi-tag{border-color:var(--border2);color:var(--ink2)}
-.wi-arrow{font-size:1.1rem;color:var(--dim);text-align:right;opacity:0;transform:translate(-6px,6px);transition:all .3s}
-.work-item:hover .wi-arrow{opacity:1;transform:translate(0,0);color:var(--ink)}
+/* floating cards around phone */
+.float-cards{position:absolute;inset:0;pointer-events:none}
+.fcard{position:absolute;background:rgba(255,255,255,.95);border-radius:12px;padding:10px 14px;box-shadow:0 8px 32px rgba(0,0,0,.14);min-width:120px;animation:fcFloat 4s ease-in-out infinite}
+@keyframes fcFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.fcard-lbl{font-size:8px;letter-spacing:1.5px;text-transform:uppercase;color:#6e6e73;margin-bottom:3px}
+.fcard-val{font-size:1.2rem;font-weight:700;color:#1d1d1f;letter-spacing:-.5px;line-height:1}
+.fcard-chg{font-size:8px;color:#34c759;margin-top:2px;font-weight:600}
+.fc-tl{top:10%;left:2%;animation-delay:-1s}
+.fc-tr{top:15%;right:2%;animation-delay:-2.5s}
+.fc-bl{bottom:18%;left:0%;animation-delay:-.5s}
+.fc-br{bottom:22%;right:0%;animation-delay:-2s}
 
-/* ── SERVICES (SOHub accordion style) ── */
-#services{padding:120px 0;background:var(--bg2)}
-.services-header{display:grid;grid-template-columns:1fr 1fr;align-items:end;margin-bottom:72px;gap:40px}
-.sec-tag{font-size:.7rem;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:14px;display:block}
-.big-h{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,5vw,4.5rem);font-weight:900;letter-spacing:-2px;line-height:1;color:var(--ink)}
-.big-h em{font-style:italic}
-.services-desc{font-size:.95rem;color:var(--muted);line-height:1.8;font-weight:300;max-width:380px;align-self:end}
-.services-accordion{border-top:1px solid var(--border2)}
-.sa-item{border-bottom:1px solid var(--border2);overflow:hidden}
-.sa-header{display:flex;justify-content:space-between;align-items:center;padding:28px 0;cursor:pointer;transition:padding .3s}
-.sa-header:hover{padding-left:14px}
-.sa-left{display:flex;align-items:center;gap:28px}
-.sa-num{font-size:.68rem;letter-spacing:2px;color:var(--dim);min-width:28px}
-.sa-title{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,2.5vw,2rem);font-weight:700;letter-spacing:-.5px;color:var(--ink)}
-.sa-toggle{width:36px;height:36px;border:1px solid var(--border2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.1rem;color:var(--muted);transition:all .35s;flex-shrink:0}
-.sa-item.open .sa-toggle{background:var(--ink);color:#fff;border-color:var(--ink);transform:rotate(45deg)}
-.sa-body{max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.4,0,.2,1)}
-.sa-item.open .sa-body{max-height:300px}
-.sa-body-inner{padding:0 0 28px 56px;display:grid;grid-template-columns:1fr 1fr;gap:24px}
-.sa-tags{display:flex;gap:8px;flex-wrap:wrap}
-.sa-tag{font-size:.68rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);padding:5px 14px;border:1px solid var(--border);border-radius:40px}
-.sa-copy{font-size:.9rem;color:var(--muted);line-height:1.7;font-weight:300}
+/* Funnel visual */
+.v-funnel{display:flex;flex-direction:column;align-items:center;gap:4px;perspective:600px}
+.v-funnel-layer{border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:600;letter-spacing:.5px;text-transform:uppercase;animation:funnelPulse 3s ease-in-out infinite}
+@keyframes funnelPulse{0%,100%{opacity:.9}50%{opacity:1}}
+.vfl1{width:300px;height:54px;background:linear-gradient(135deg,#0071e3,#034dc7);color:#fff;animation-delay:0s}
+.vfl2{width:240px;height:50px;background:linear-gradient(135deg,#147ce5,#0555b0);color:#fff;animation-delay:.3s}
+.vfl3{width:180px;height:48px;background:linear-gradient(135deg,#2d8eea,#0763bc);color:#fff;animation-delay:.6s}
+.vfl4{width:120px;height:44px;background:linear-gradient(135deg,#50a4ef,#1475ce);color:#fff;animation-delay:.9s;border-radius:8px 8px 24px 24px}
 
-/* ── WHY US ── */
-#why{padding:120px 0;background:var(--bg)}
-.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:100px;align-items:start}
-.why-left .big-h{margin-bottom:32px}
-.why-pull{font-family:'Playfair Display',serif;font-size:clamp(1rem,1.6vw,1.3rem);font-style:italic;color:var(--muted);line-height:1.7;border-left:2px solid var(--ink);padding-left:20px;margin-bottom:52px}
-.why-list{border-top:1px solid var(--border)}
-.wl-item{display:flex;align-items:flex-start;gap:20px;padding:22px 0;border-bottom:1px solid var(--border);transition:padding .25s}
-.wl-item:hover{padding-left:12px}
-.wl-ic{width:34px;height:34px;border:1px solid var(--border2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.9rem;flex-shrink:0;transition:all .25s}
-.wl-item:hover .wl-ic{border-color:var(--ink);background:var(--ink2);color:#fff}
-.wl-label{font-size:.82rem;font-weight:500;color:var(--ink);margin-bottom:3px}
-.wl-copy{font-size:.8rem;color:var(--muted);line-height:1.6}
-.stats-panel{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border)}
-.sp-cell{background:var(--bg);padding:40px 32px;transition:background .3s;position:relative;overflow:hidden}
-.sp-cell::before{content:'';position:absolute;bottom:0;left:0;width:100%;height:2px;background:var(--ink);transform:scaleX(0);transform-origin:left;transition:transform .4s cubic-bezier(.4,0,.2,1)}
-.sp-cell:hover::before{transform:scaleX(1)}
-.sp-cell:hover{background:var(--bg2)}
-.sp-num{font-family:'Playfair Display',serif;font-size:clamp(2.5rem,5vw,4rem);font-weight:900;letter-spacing:-2px;color:var(--ink);line-height:1;margin-bottom:8px}
-.sp-label{font-size:.72rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted)}
+/* Speedometer-style ROI gauge */
+.v-gauge{position:relative;width:200px;height:110px}
+.v-gauge svg{width:100%;height:100%}
 
-/* ── ABOUT ── */
-#about{padding:120px 0;background:var(--bg2)}
-.about-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:80px;align-items:center}
-.about-text .big-h{margin-bottom:28px}
-.about-copy{font-size:1rem;line-height:1.85;color:var(--muted);font-weight:300;margin-bottom:40px}
-.about-copy em{color:var(--ink);font-style:normal;font-weight:400}
-.about-pills{display:flex;flex-wrap:wrap;gap:8px}
-.apill{padding:8px 18px;border:1px solid var(--border2);border-radius:40px;font-size:.7rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);transition:all .25s;cursor:default}
-.apill:hover{border-color:var(--ink);color:var(--ink)}
-.about-visual{position:relative;height:520px}
-.av-main{position:absolute;inset:0;border:1px solid var(--border2);border-radius:4px;overflow:hidden;background:var(--bg);display:flex;align-items:center;justify-content:center}
-.av-svg{width:100%;height:100%}
-.av-badge{position:absolute;top:-16px;right:-16px;width:96px;height:96px;border-radius:50%;background:var(--ink);display:flex;align-items:center;justify-content:center;text-align:center;z-index:2;animation:rotateBadge 12s linear infinite}
-@keyframes rotateBadge{from{transform:rotate(0)}to{transform:rotate(360deg)}}
-.av-badge span{font-size:.5rem;font-weight:500;color:#fff;letter-spacing:1.5px;text-transform:uppercase;line-height:1.4;animation:rotateBadge 12s linear infinite reverse}
+/* Grid of mini stat boxes */
+.v-stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;width:100%;max-width:320px}
+.v-stat-box{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);border-radius:12px;padding:14px 16px;text-align:left}
+.v-stat-box.light{background:rgba(0,0,0,.05);border-color:rgba(0,0,0,.08)}
+.vsb-label{font-size:.6rem;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:4px}
+.vsb-label.dark{color:rgba(0,0,0,.45)}
+.vsb-val{font-size:1.6rem;font-weight:700;color:#fff;letter-spacing:-1px;line-height:1}
+.vsb-val.dark{color:#1d1d1f}
+.vsb-sub{font-size:.65rem;color:rgba(255,255,255,.45);margin-top:2px}
+.vsb-sub.dark{color:rgba(0,0,0,.4)}
 
-/* ── PORTFOLIO ── */
-#portfolio{padding:120px 0;background:var(--bg)}
-.portfolio-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:56px;flex-wrap:wrap;gap:24px}
-.pg{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--border)}
-.pg-wide{grid-column:1/-1}
-.pg-item{position:relative;overflow:hidden;cursor:pointer;background:var(--bg2)}
-.pg-item:not(.pg-wide){aspect-ratio:4/3}
-.pg-wide{aspect-ratio:21/8}
-.pg-inner{width:100%;height:100%;transition:transform .7s cubic-bezier(.4,0,.2,1);display:flex;align-items:center;justify-content:center}
-.pg-item:hover .pg-inner{transform:scale(1.03)}
-.pg-overlay{position:absolute;inset:0;background:rgba(10,10,10,0);transition:background .4s;display:flex;align-items:flex-end;padding:32px}
-.pg-item:hover .pg-overlay{background:rgba(10,10,10,.6)}
-.pg-info{transform:translateY(16px);opacity:0;transition:all .4s}
-.pg-item:hover .pg-info{transform:translateY(0);opacity:1}
-.pg-n{font-size:.62rem;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:6px}
-.pg-title{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;color:#fff;letter-spacing:-.5px}
-.pg-sub{font-size:.72rem;color:rgba(255,255,255,.5);margin-top:4px}
-.pg-arr{position:absolute;top:20px;right:20px;width:38px;height:38px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;font-size:.9rem;color:var(--ink);opacity:0;transform:scale(.6);transition:all .3s}
-.pg-item:hover .pg-arr{opacity:1;transform:scale(1)}
+/* India map dots visual */
+.v-india{position:relative;width:240px;height:280px}
+.india-dot{position:absolute;width:8px;height:8px;border-radius:50%;background:var(--apple-blue);animation:dotPop 2s ease-in-out infinite}
+.india-ring{position:absolute;width:24px;height:24px;border-radius:50%;border:1.5px solid var(--apple-blue);opacity:.4;transform:translate(-8px,-8px);animation:ringPulse 2s ease-in-out infinite}
+@keyframes dotPop{0%,100%{transform:scale(1)}50%{transform:scale(1.4)}}
+@keyframes ringPulse{0%,100%{opacity:.4;transform:translate(-8px,-8px) scale(1)}50%{opacity:.1;transform:translate(-8px,-8px) scale(1.8)}}
 
-/* ── CTAS ("Don't be shy" SOHub style) ── */
-#shy{padding:160px 6%;background:var(--bg2);text-align:center;position:relative;overflow:hidden}
-.shy-bg-word{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:'Playfair Display',serif;font-size:clamp(8rem,22vw,22rem);font-weight:900;color:rgba(0,0,0,.04);white-space:nowrap;pointer-events:none;user-select:none;letter-spacing:-6px}
-.shy-content{position:relative;z-index:1}
-.shy-label{font-size:.7rem;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:20px}
-.shy-h{font-family:'Playfair Display',serif;font-size:clamp(3rem,9vw,9rem);font-weight:900;letter-spacing:-3px;line-height:.95;margin-bottom:24px}
-.shy-h em{font-style:italic}
-.shy-sub{font-size:1rem;color:var(--muted);font-weight:300;margin-bottom:52px}
-.shy-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+/* Brand logo wall */
+.brand-logos{display:flex;flex-wrap:wrap;gap:20px;justify-content:center;align-items:center;margin-top:24px}
+.brand-logo-item{width:90px;height:36px;background:rgba(0,0,0,.06);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:.65rem;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:rgba(0,0,0,.35)}
+.tile-dark .brand-logo-item{background:rgba(255,255,255,.1);color:rgba(255,255,255,.4)}
 
-/* ── CONTACT ── */
-#contact{padding:120px 0;background:var(--bg)}
-.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
-.contact-left .big-h{margin-bottom:20px}
-.contact-tagline{font-size:.95rem;color:var(--muted);font-weight:300;line-height:1.75;margin-bottom:52px}
-.contact-rows{border-top:1px solid var(--border)}
-.cr{display:flex;align-items:center;gap:16px;padding:18px 0;border-bottom:1px solid var(--border);transition:padding .2s}
-.cr:hover{padding-left:10px}
-.cr-ic{width:34px;height:34px;border:1px solid var(--border2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.85rem;flex-shrink:0;transition:all .25s}
-.cr:hover .cr-ic{border-color:var(--ink);background:var(--ink);color:#fff;font-size:0}
-.cr:hover .cr-ic::after{content:'→';font-size:.85rem;color:#fff}
-.cr-lbl{font-size:.62rem;letter-spacing:2px;text-transform:uppercase;color:var(--dim);margin-bottom:2px}
-.cr-val{font-size:.88rem;color:var(--muted)}
-.cr-val a{color:inherit;text-decoration:none;transition:color .2s}
-.cr-val a:hover{color:var(--ink)}
-.social-row{display:flex;gap:10px;margin-top:32px}
-.sb{padding:10px 22px;border:1px solid var(--border2);border-radius:40px;color:var(--muted);text-decoration:none;font-size:.7rem;letter-spacing:1.5px;text-transform:uppercase;transition:all .25s}
-.sb:hover{border-color:var(--ink);color:var(--ink)}
-.cf{background:var(--bg2);border:1px solid var(--border);border-radius:4px;padding:44px 40px}
-.cf-title{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;letter-spacing:-.5px;margin-bottom:30px;color:var(--ink)}
-.fg{margin-bottom:20px}
-.fg label{display:block;font-size:.62rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
-.fg input,.fg select,.fg textarea{width:100%;background:var(--bg);border:1px solid var(--border2);border-radius:2px;padding:13px 16px;color:var(--ink);font-size:.88rem;font-family:'DM Sans',sans-serif;outline:none;transition:border-color .25s}
-.fg select{cursor:pointer}
+/* ─── TESTIMONIALS (Apple-style card grid) ─── */
+.testimonials-section{padding:52px 12px;background:var(--apple-bg)}
+.testimonials-header{text-align:center;margin-bottom:36px}
+.testimonials-header .sec-eyebrow{font-size:.82rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--apple-blue);margin-bottom:8px}
+.testimonials-header h2{font-size:clamp(1.8rem,4vw,3.5rem);font-weight:700;letter-spacing:-.03em;color:var(--apple-black)}
+.tgrid{max-width:1024px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.tcard{background:var(--apple-white);border-radius:var(--tile-radius);padding:32px 28px;display:flex;flex-direction:column;gap:16px;box-shadow:0 2px 12px rgba(0,0,0,.06)}
+.tcard-stars{color:#FF9500;font-size:.95rem;letter-spacing:2px}
+.tcard-quote{font-size:.95rem;line-height:1.65;color:#1d1d1f;font-weight:400;letter-spacing:-.01em;flex:1}
+.tcard-author{display:flex;align-items:center;gap:12px;margin-top:auto}
+.tcard-avatar{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1rem;font-weight:700;color:#fff;flex-shrink:0}
+.tcard-name{font-size:.82rem;font-weight:600;color:#1d1d1f;letter-spacing:-.01em}
+.tcard-role{font-size:.72rem;color:var(--apple-gray);margin-top:1px}
+
+/* ─── STATS BAR (Apple-style) ─── */
+.stats-bar{background:#fff;padding:52px 12px;border-top:1px solid var(--apple-mid-gray);border-bottom:1px solid var(--apple-mid-gray)}
+.stats-inner{max-width:1024px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:0;text-align:center}
+.stat-item{padding:20px;border-right:1px solid var(--apple-mid-gray)}
+.stat-item:last-child{border-right:none}
+.stat-n{font-size:clamp(2rem,4vw,3.2rem);font-weight:700;letter-spacing:-.03em;color:var(--apple-black);line-height:1}
+.stat-l{font-size:.78rem;color:var(--apple-gray);margin-top:6px;letter-spacing:-.01em}
+
+/* ─── CONTACT FORM (Apple-style) ─── */
+.contact-section{padding:52px 12px;background:var(--apple-bg)}
+.contact-inner{max-width:680px;margin:0 auto;text-align:center}
+.contact-inner h2{font-size:clamp(1.8rem,4vw,3rem);font-weight:700;letter-spacing:-.03em;color:var(--apple-black);margin-bottom:10px}
+.contact-inner p{font-size:1rem;color:var(--apple-gray);margin-bottom:36px;letter-spacing:-.01em}
+.apple-form{background:#fff;border-radius:var(--tile-radius);padding:40px;box-shadow:0 2px 16px rgba(0,0,0,.07)}
+.fg{margin-bottom:14px;text-align:left}
+.fg label{display:block;font-size:.7rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--apple-gray);margin-bottom:5px}
+.fg input,.fg select,.fg textarea{
+  width:100%;padding:12px 14px;
+  background:#f5f5f7;border:1px solid #e0e0e5;border-radius:10px;
+  font-size:.95rem;font-family:var(--apple-font);color:var(--apple-black);
+  outline:none;transition:border-color .2s,box-shadow .2s;-webkit-appearance:none;
+}
+.fg select{background:#f5f5f7;cursor:pointer}
 .fg select option{background:#fff}
-.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--ink)}
-.fg textarea{resize:vertical;min-height:88px}
-.cf-btn{width:100%;padding:15px;background:var(--ink);border:none;border-radius:40px;color:#fff;font-size:.82rem;font-weight:500;cursor:pointer;letter-spacing:.8px;text-transform:uppercase;transition:all .3s;margin-top:6px;position:relative;overflow:hidden}
-.cf-btn::before{content:'';position:absolute;inset:0;background:#333;border-radius:40px;transform:translateX(-100%);transition:transform .4s cubic-bezier(.76,0,.24,1)}
-.cf-btn:hover::before{transform:translateX(0)}
-.cf-btn span{position:relative;z-index:1}
-.cf-ok{display:none;text-align:center;padding:24px;color:var(--ink);font-size:.9rem;font-weight:500;font-family:'Playfair Display',serif;font-style:italic}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--apple-blue);box-shadow:0 0 0 3px rgba(0,113,227,.15)}
+.fg textarea{resize:vertical;min-height:80px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.apple-submit{
+  width:100%;padding:14px;margin-top:8px;
+  background:var(--apple-blue);border:none;border-radius:10px;
+  color:#fff;font-size:1rem;font-weight:600;font-family:var(--apple-font);
+  cursor:pointer;letter-spacing:-.01em;transition:background .2s;
+}
+.apple-submit:hover{background:var(--apple-blue-hover)}
+.form-ok{display:none;text-align:center;padding:20px;font-size:1rem;color:var(--apple-blue);font-weight:500}
 
-/* ── FOOTER ── */
-footer{padding:48px 6%;background:var(--ink);display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:20px}
-.fl{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:900;color:#fff;text-decoration:none;letter-spacing:-.5px}
-.fc{font-size:.68rem;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.35);text-align:center}
-.flinks{display:flex;gap:24px;justify-content:flex-end}
-.flinks a{font-size:.68rem;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.35);text-decoration:none;transition:color .2s}
-.flinks a:hover{color:#fff}
+/* ─── FOOTER (Apple exact) ─── */
+#footer{background:#f5f5f7;border-top:1px solid #d2d2d7;padding:0}
+.footer-top{max-width:980px;margin:0 auto;padding:18px 22px;font-size:.75rem;color:var(--apple-gray);border-bottom:1px solid #d2d2d7;line-height:1.6}
+.footer-top a{color:var(--apple-gray)}
+.footer-top a:hover{color:var(--apple-blue)}
+.footer-cols{max-width:980px;margin:0 auto;padding:18px 22px;display:grid;grid-template-columns:repeat(5,1fr);gap:28px;border-bottom:1px solid #d2d2d7}
+.footer-col h4{font-size:.8rem;font-weight:600;color:var(--apple-black);margin-bottom:10px;letter-spacing:-.01em}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:7px}
+.footer-col ul a{font-size:.75rem;color:var(--apple-gray);transition:color .2s}
+.footer-col ul a:hover{color:var(--apple-blue);text-decoration:none}
+.footer-bottom{max-width:980px;margin:0 auto;padding:14px 22px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+.footer-copy{font-size:.72rem;color:var(--apple-gray)}
+.footer-legal{display:flex;gap:16px;flex-wrap:wrap}
+.footer-legal a{font-size:.72rem;color:var(--apple-gray)}
+.footer-legal a:hover{color:var(--apple-blue)}
 
-/* ── WA ── */
-#wa{position:fixed;bottom:28px;right:28px;width:50px;height:50px;background:#25d366;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.3rem;z-index:900;text-decoration:none;box-shadow:0 4px 20px rgba(37,211,102,.3);transition:all .25s}
+/* ─── MOBILE NAV ─── */
+#mob-overlay{position:fixed;inset:0;background:rgba(255,255,255,.97);backdrop-filter:blur(20px);z-index:8999;display:none;flex-direction:column;align-items:center;justify-content:center;gap:28px;padding:20px}
+#mob-overlay.open{display:flex}
+#mob-overlay a{font-size:1.4rem;font-weight:500;color:var(--apple-black);transition:color .2s}
+#mob-overlay a:hover{color:var(--apple-blue);text-decoration:none}
+
+/* ─── REVEAL ─── */
+.rv{opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s ease}
+.rv.in{opacity:1;transform:none}
+.rv-d1{transition-delay:.1s}.rv-d2{transition-delay:.2s}.rv-d3{transition-delay:.3s}.rv-d4{transition-delay:.4s}
+
+/* ─── WA FLOAT ─── */
+#wa{position:fixed;bottom:24px;right:24px;width:48px;height:48px;background:#25d366;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.3rem;z-index:8000;box-shadow:0 4px 16px rgba(37,211,102,.35);transition:transform .2s}
 #wa:hover{transform:scale(1.1)}
 
-/* ── MOBILE NAV ── */
-#mob{position:fixed;top:72px;left:0;right:0;background:rgba(255,255,255,.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:32px 6%;z-index:999;display:none;flex-direction:column;gap:22px}
-#mob.open{display:flex}
-#mob a{color:var(--muted);text-decoration:none;font-size:1rem;font-weight:300;letter-spacing:.3px;transition:color .2s}
-#mob a:hover{color:var(--ink)}
-
-/* ── SCROLL REVEAL ── */
-.rv{opacity:0;transform:translateY(32px);transition:opacity .8s ease,transform .8s ease}
-.rv.in{opacity:1;transform:translateY(0)}
-.rv-l{opacity:0;transform:translateX(-24px);transition:opacity .7s ease,transform .7s ease}
-.rv-l.in{opacity:1;transform:translateX(0)}
-.rv-d1{transition-delay:.1s}.rv-d2{transition-delay:.2s}.rv-d3{transition-delay:.3s}.rv-d4{transition-delay:.4s}.rv-d5{transition-delay:.5s}
-
-/* ── RESPONSIVE ── */
-@media(max-width:1000px){
-  .nav-center{display:none}
-  .nav-cta{display:none}
-  .hamburger{display:flex}
-  .why-grid,.about-grid,.contact-grid{grid-template-columns:1fr}
-  .about-visual{height:320px;margin-bottom:20px}
-  .about-grid{direction:rtl}.about-grid>*{direction:ltr}
-  .work-item{grid-template-columns:48px 1fr 48px;gap:16px}
-  .wi-tags{display:none}
-  .services-header,.work-header{grid-template-columns:1fr}
-  .stats-panel{grid-template-columns:1fr 1fr}
-  .pg{grid-template-columns:1fr}
-  .pg-wide{grid-column:auto;aspect-ratio:4/3}
-  footer{grid-template-columns:1fr;text-align:center}
-  .flinks{justify-content:center}
+/* ─── RESPONSIVE ─── */
+@media(max-width:834px){
+  .gnav-links{display:none}
+  .gnav-icons{display:none}
+  .ham-btn{display:flex}
+  .tile-row-2,.tile-row-3{grid-template-columns:1fr}
+  .tgrid{grid-template-columns:1fr}
+  .stats-inner{grid-template-columns:1fr 1fr}
+  .stat-item:nth-child(2){border-right:none}
+  .footer-cols{grid-template-columns:1fr 1fr}
+  .form-row{grid-template-columns:1fr}
+  .float-cards{display:none}
 }
-@media(max-width:600px){
-  #hero{padding:0 4% 60px}
-  .hero-visual-float{display:none}
-  .wrap{padding:0 4%}
-  .work-item{padding:24px 4%}
-  .work-item:hover{padding-left:calc(4% + 14px)}
-  .sa-body-inner{grid-template-columns:1fr}
-  .cf{padding:28px 20px}
-  .shy-btns{flex-direction:column;align-items:center}
-  footer{padding:32px 4%}
+@media(max-width:480px){
+  .tile{padding:40px 24px 32px;min-height:420px}
+  .tile-hero{min-height:520px}
+  .stats-inner{grid-template-columns:1fr 1fr}
+  .footer-cols{grid-template-columns:1fr}
+  .apple-form{padding:28px 20px}
+  .gnav-inner{padding:0 14px}
 }
 </style>
 </head>
 <body>
 
-<!-- CURSOR -->
-<div id="cur"></div>
-<div id="cur-outer"></div>
-
-<!-- LOADER -->
-<div id="loader">
-  <div>
-    <div class="ld-logo">
-      <span>D</span><span>i</span><span>g</span><span>i</span><span>t</span><span>r</span><span>a</span><span>c</span><span>t</span>
-    </div>
-    <div class="ld-line"></div>
-    <div class="ld-pct">Loading experience…</div>
-  </div>
-</div>
-
 <!-- WA -->
-<a id="wa" href="https://wa.me/919318459629" target="_blank" title="WhatsApp">💬</a>
+<a id="wa" href="https://wa.me/919318459629" target="_blank" aria-label="WhatsApp">💬</a>
 
-<!-- NAV -->
-<nav id="nav">
-  <a href="#hero" class="nav-logo" data-text="Digitract"><span>Digitract</span></a>
-  <ul class="nav-center">
-    <li><a href="#work">Work</a></li>
-    <li><a href="#services">Services</a></li>
-    <li><a href="#about">Studio</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-  <a href="#contact" class="nav-cta"><span>Start a Project</span></a>
-  <div class="hamburger" id="ham"><span></span><span></span><span></span></div>
+<!-- ══ GLOBAL NAV ══ -->
+<nav id="gnav" role="navigation">
+  <div class="gnav-inner">
+    <a href="#" class="gnav-logo">Digit<span>ract</span></a>
+    <ul class="gnav-links" role="list">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#performance">Performance</a></li>
+      <li><a href="#clients">Clients</a></li>
+      <li><a href="#india">India</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="gnav-icons">
+      <button class="gnav-icon-btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})" title="Get Started">🚀</button>
+      <button class="gnav-icon-btn" onclick="window.open('https://wa.me/919318459629','_blank')" title="WhatsApp">💬</button>
+    </div>
+    <button class="ham-btn" id="ham" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
 </nav>
-<div id="mob">
-  <a href="#work" onclick="cm()">Work</a>
+
+<!-- MOBILE NAV -->
+<div id="mob-overlay" role="dialog" aria-label="Navigation">
   <a href="#services" onclick="cm()">Services</a>
-  <a href="#about" onclick="cm()">Studio</a>
+  <a href="#performance" onclick="cm()">Performance</a>
+  <a href="#clients" onclick="cm()">Clients</a>
+  <a href="#india" onclick="cm()">India</a>
+  <a href="#about" onclick="cm()">About</a>
   <a href="#contact" onclick="cm()">Contact</a>
 </div>
 
-<!-- ═══════════════════════════════════ HERO ═══════════════════════════════════ -->
-<section id="hero">
-  <div class="hero-top-bar">
-    <div class="hero-eyebrow"><span>India's Creative Digital Agency</span></div>
-    <div class="hero-status"><div class="hero-dot"></div><span>Available for new projects · 2024</span></div>
-  </div>
+<!-- ══ PROMO BANNER ══ -->
+<div class="promo-banner">
+  🇮🇳 &nbsp;Free brand audit for Indian businesses.&nbsp;
+  <a href="#contact">Claim yours →</a>
+</div>
 
-  <div class="hero-visual-float">
-    <div class="hvf-card">
-      <div class="hvf-label">Campaign Performance</div>
-      <div class="hvf-num">3.2×</div>
-      <div class="hvf-sub">Average ROI · Q4 2024</div>
-      <div class="hvf-sparkline">
-        <div style="--op:.12"></div><div style="--op:.18"></div><div style="--op:.14"></div>
-        <div style="--op:.25"></div><div style="--op:.2"></div><div style="--op:.35"></div><div style="--op:.3"></div>
+<!-- ══════════════════════════════════════════════
+     APPLE-STYLE PRODUCT GRID
+══════════════════════════════════════════════ -->
+<main id="main-content">
+<div class="apple-grid">
+
+  <!-- HERO TILE — Dark, full width, like iPhone hero -->
+  <div class="tile tile-dark tile-hero rv" id="services">
+    <span class="tile-eyebrow">India's #1 Performance Marketing Agency</span>
+    <h1 class="tile-title">Where Brands<br>Gain <span style="background:linear-gradient(135deg,#2997ff,#5ac8fa);-webkit-background-clip:text;-webkit-text-fill-color:transparent">Traction.</span></h1>
+    <p class="tile-sub">Data-driven campaigns. Creative excellence. Real results.<br>Trusted by 50+ brands across India.</p>
+    <div class="tile-ctas">
+      <a href="#contact" class="tile-cta-filled">Start Growing →</a>
+      <a href="#performance" class="tile-cta-ghost" style="border-color:rgba(255,255,255,.3);color:#f5f5f7">View Our Work</a>
+    </div>
+    <div class="tile-visual" style="min-height:300px">
+      <!-- 3D Phone with metrics -->
+      <div style="position:relative;width:100%;max-width:500px;height:300px;display:flex;align-items:center;justify-content:center">
+        <div class="v-phone" style="position:relative;z-index:2">
+          <div class="v-phone-notch"></div>
+          <div class="v-phone-screen">
+            <div style="font-size:.6rem;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:4px">DIGITRACT DASHBOARD</div>
+            <div class="v-pmetric">
+              <div class="v-pmetric-label">Campaign ROI</div>
+              <div class="v-pmetric-val">320%</div>
+              <div class="v-pmetric-chg">↑ +140% vs last month</div>
+            </div>
+            <div class="v-pmetric">
+              <div class="v-pmetric-label">Monthly Reach</div>
+              <div class="v-pmetric-val">2.4M</div>
+              <div class="v-pmetric-chg">↑ +42% India growth</div>
+            </div>
+            <div class="v-pmetric" style="background:rgba(255,255,255,.08)">
+              <div class="v-pmetric-label">Lead Volume</div>
+              <div class="v-pbars">
+                <div style="height:30%"></div><div style="height:50%"></div>
+                <div style="height:40%"></div><div style="height:75%"></div>
+                <div style="height:60%"></div><div style="height:95%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- floating cards -->
+        <div class="float-cards">
+          <div class="fcard fc-tl">
+            <div class="fcard-lbl">Conversions</div>
+            <div class="fcard-val">4,820</div>
+            <div class="fcard-chg">↑ This week</div>
+          </div>
+          <div class="fcard fc-tr">
+            <div class="fcard-lbl">ROAS</div>
+            <div class="fcard-val">8.4×</div>
+            <div class="fcard-chg">↑ Google Ads</div>
+          </div>
+          <div class="fcard fc-bl">
+            <div class="fcard-lbl">CTR</div>
+            <div class="fcard-val">6.2%</div>
+            <div class="fcard-chg">↑ Meta Ads</div>
+          </div>
+          <div class="fcard fc-br">
+            <div class="fcard-lbl">Cost/Lead</div>
+            <div class="fcard-val">₹48</div>
+            <div class="fcard-chg">↓ -22%</div>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="hvf-card">
-      <div class="hvf-label">Projects Completed</div>
-      <div class="hvf-num">100+</div>
-      <div class="hvf-sub">50+ Happy Clients</div>
-      <div class="hvf-bar-wrap"><div class="hvf-bar" style="--w:82%"></div></div>
+  </div>
+
+  <!-- ROW 1: 2 tiles -->
+  <div class="tile-row tile-row-2">
+
+    <!-- Performance Marketing -->
+    <div class="tile tile-white rv" id="performance">
+      <span class="tile-eyebrow" style="color:var(--apple-blue)">Performance Marketing</span>
+      <h2 class="tile-title">Every rupee.<br><em>Accounted for.</em></h2>
+      <p class="tile-sub" style="color:var(--apple-gray)">Meta Ads, Google Ads, and YouTube campaigns engineered to deliver measurable ROI — not just impressions.</p>
+      <div class="tile-ctas">
+        <a href="#contact" class="tile-cta" style="color:var(--apple-blue)">Get a free audit →</a>
+      </div>
+      <div class="tile-visual">
+        <!-- Funnel -->
+        <div class="v-funnel">
+          <div class="v-funnel-layer vfl1">Awareness</div>
+          <div class="v-funnel-layer vfl2">Consideration</div>
+          <div class="v-funnel-layer vfl3">Intent</div>
+          <div class="v-funnel-layer vfl4">Conversion</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEO / Search -->
+    <div class="tile tile-indigo rv rv-d1">
+      <span class="tile-eyebrow">SEO & Content</span>
+      <h2 class="tile-title">Rank #1.<br>Own your market.</h2>
+      <p class="tile-sub">Technical SEO, content strategy and link-building that gets Indian businesses to the top of Google — and keeps them there.</p>
+      <div class="tile-ctas">
+        <a href="#contact" class="tile-cta">Check my rankings →</a>
+      </div>
+      <div class="tile-visual">
+        <svg viewBox="0 0 280 160" width="90%" style="opacity:.9">
+          <defs>
+            <linearGradient id="barG" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#2997ff"/>
+              <stop offset="100%" stop-color="#6eb4f7"/>
+            </linearGradient>
+          </defs>
+          <!-- grid lines -->
+          <line x1="0" y1="140" x2="280" y2="140" stroke="rgba(255,255,255,.12)" stroke-width="1"/>
+          <line x1="0" y1="100" x2="280" y2="100" stroke="rgba(255,255,255,.07)" stroke-width="1"/>
+          <line x1="0" y1="60" x2="280" y2="60" stroke="rgba(255,255,255,.07)" stroke-width="1"/>
+          <!-- bars -->
+          <rect x="10" y="110" width="28" height="30" rx="4" fill="url(#barG)" opacity=".5"/>
+          <rect x="48" y="90" width="28" height="50" rx="4" fill="url(#barG)" opacity=".6"/>
+          <rect x="86" y="72" width="28" height="68" rx="4" fill="url(#barG)" opacity=".7"/>
+          <rect x="124" y="50" width="28" height="90" rx="4" fill="url(#barG)" opacity=".8"/>
+          <rect x="162" y="30" width="28" height="110" rx="4" fill="url(#barG)" opacity=".9"/>
+          <rect x="200" y="14" width="28" height="126" rx="4" fill="url(#barG)"/>
+          <rect x="238" y="8" width="28" height="132" rx="4" fill="#2997ff"/>
+          <!-- trend line -->
+          <polyline points="24,125 62,105 100,88 138,65 176,45 214,29 252,22" fill="none" stroke="#fff" stroke-width="2" stroke-opacity=".5" stroke-dasharray="4 3"/>
+          <!-- labels -->
+          <text x="252" y="5" fill="rgba(255,255,255,.8)" font-size="8" text-anchor="middle" font-family="sans-serif">#1</text>
+        </svg>
+      </div>
     </div>
   </div>
 
-  <div class="hero-headline">
-    <h1 class="hero-h1">
-      <span class="hl"><span>Where Brands</span></span>
-      <span class="hl"><span>Gain <em>Traction</em></span></span>
-      <span class="hl"><span>— &amp; Scale.</span></span>
-    </h1>
+  <!-- FULL WIDTH: Social Media -->
+  <div class="tile tile-off rv" style="background:linear-gradient(135deg,#fff7f0 0%,#fff0f5 100%)">
+    <span class="tile-eyebrow" style="color:#ff3b30">Social Media Marketing</span>
+    <h2 class="tile-title" style="color:#1d1d1f">Stop the scroll.<br>Start the conversation.</h2>
+    <p class="tile-sub" style="color:var(--apple-gray)">Instagram, Facebook, YouTube and LinkedIn content that builds communities, drives engagement and converts followers into customers — across India and beyond.</p>
+    <div class="tile-ctas">
+      <a href="#contact" class="tile-cta-filled" style="background:#ff3b30">Grow my social →</a>
+      <a href="#clients" class="tile-cta-ghost">See case studies</a>
+    </div>
+    <div class="tile-visual">
+      <!-- Instagram-style post cards -->
+      <div style="display:flex;gap:12px;align-items:center;justify-content:center;flex-wrap:wrap">
+        <div style="width:130px;height:160px;border-radius:16px;background:linear-gradient(135deg,#ff6b9d,#ff3b30);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:6px;box-shadow:0 12px 40px rgba(255,59,48,.25);animation:cardSway 4s ease-in-out infinite">
+          <div style="font-size:2rem">📱</div>
+          <div style="font-size:.62rem;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.8)">Instagram</div>
+          <div style="font-size:1rem;font-weight:700;color:#fff">+240%</div>
+          <div style="font-size:.6rem;color:rgba(255,255,255,.7)">Engagement</div>
+        </div>
+        <div style="width:130px;height:180px;border-radius:16px;background:linear-gradient(135deg,#1877f2,#0d5ac1);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:6px;box-shadow:0 12px 40px rgba(24,119,242,.25);animation:cardSway 4s ease-in-out infinite;animation-delay:-.8s">
+          <div style="font-size:2rem">👍</div>
+          <div style="font-size:.62rem;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.8)">Facebook</div>
+          <div style="font-size:1rem;font-weight:700;color:#fff">₹48/lead</div>
+          <div style="font-size:.6rem;color:rgba(255,255,255,.7)">Avg. Cost</div>
+        </div>
+        <div style="width:130px;height:160px;border-radius:16px;background:linear-gradient(135deg,#ff0000,#cc0000);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:6px;box-shadow:0 12px 40px rgba(255,0,0,.2);animation:cardSway 4s ease-in-out infinite;animation-delay:-1.6s">
+          <div style="font-size:2rem">▶️</div>
+          <div style="font-size:.62rem;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.8)">YouTube</div>
+          <div style="font-size:1rem;font-weight:700;color:#fff">10M+</div>
+          <div style="font-size:.6rem;color:rgba(255,255,255,.7)">Views Delivered</div>
+        </div>
+        <div style="width:130px;height:160px;border-radius:16px;background:linear-gradient(135deg,#0077b5,#004a73);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:6px;box-shadow:0 12px 40px rgba(0,119,181,.25);animation:cardSway 4s ease-in-out infinite;animation-delay:-2.4s">
+          <div style="font-size:2rem">💼</div>
+          <div style="font-size:.62rem;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.8)">LinkedIn</div>
+          <div style="font-size:1rem;font-weight:700;color:#fff">B2B</div>
+          <div style="font-size:.6rem;color:rgba(255,255,255,.7)">Lead Gen</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <style>@keyframes cardSway{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-10px) rotate(1deg)}}</style>
+
+  <!-- ROW 2: 2 tiles -->
+  <div class="tile-row tile-row-2">
+
+    <!-- Website Development -->
+    <div class="tile tile-dark rv">
+      <span class="tile-eyebrow">Website Development</span>
+      <h2 class="tile-title">Websites that<br>actually convert.</h2>
+      <p class="tile-sub" style="color:rgba(245,245,247,.7)">Lightning-fast, mobile-first websites designed to turn traffic into leads. From landing pages to full e-commerce.</p>
+      <div class="tile-ctas">
+        <a href="#contact" class="tile-cta">Build my website →</a>
+      </div>
+      <div class="tile-visual">
+        <!-- Browser mockup -->
+        <div style="width:100%;max-width:320px;background:#2c2c2e;border-radius:12px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.5);animation:browserFloat 5s ease-in-out infinite">
+          <div style="background:#3a3a3c;padding:8px 14px;display:flex;align-items:center;gap:6px">
+            <div style="width:10px;height:10px;border-radius:50%;background:#ff5f57"></div>
+            <div style="width:10px;height:10px;border-radius:50%;background:#febc2e"></div>
+            <div style="width:10px;height:10px;border-radius:50%;background:#28c840"></div>
+            <div style="flex:1;background:#1c1c1e;border-radius:4px;height:18px;margin-left:8px;display:flex;align-items:center;justify-content:center">
+              <span style="font-size:8px;color:rgba(255,255,255,.3)">digitract.in</span>
+            </div>
+          </div>
+          <div style="padding:16px;background:#1c1c1e">
+            <div style="height:12px;background:#2c2c2e;border-radius:3px;margin-bottom:8px;width:70%"></div>
+            <div style="height:8px;background:#2c2c2e;border-radius:3px;margin-bottom:6px;width:90%"></div>
+            <div style="height:8px;background:#2c2c2e;border-radius:3px;margin-bottom:12px;width:60%"></div>
+            <div style="height:36px;background:linear-gradient(135deg,#0071e3,#034dc7);border-radius:6px;display:flex;align-items:center;justify-content:center">
+              <span style="font-size:9px;color:#fff;font-weight:600;letter-spacing:1px">GET STARTED</span>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:10px">
+              <div style="height:50px;background:#2c2c2e;border-radius:6px"></div>
+              <div style="height:50px;background:#2c2c2e;border-radius:6px"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <style>@keyframes browserFloat{0%,100%{transform:perspective(800px) rotateY(-5deg) rotateX(3deg)}50%{transform:perspective(800px) rotateY(5deg) rotateX(-2deg)}}</style>
+
+    <!-- Branding -->
+    <div class="tile tile-warm rv rv-d1">
+      <span class="tile-eyebrow" style="color:#ff9500">Branding & Identity</span>
+      <h2 class="tile-title">Your brand.<br>Unforgettable.</h2>
+      <p class="tile-sub" style="color:var(--apple-gray)">Logo, colour palette, typography and brand guidelines that make you instantly recognisable — from Delhi to Mumbai to Bangalore.</p>
+      <div class="tile-ctas">
+        <a href="#contact" class="tile-cta" style="color:#ff9500">Rebrand with us →</a>
+      </div>
+      <div class="tile-visual">
+        <div style="display:flex;flex-direction:column;gap:10px;align-items:center;width:100%;max-width:280px">
+          <!-- colour palette -->
+          <div style="display:flex;gap:6px;width:100%">
+            <div style="flex:1;height:40px;border-radius:8px;background:#0071e3"></div>
+            <div style="flex:1;height:40px;border-radius:8px;background:#ff9500"></div>
+            <div style="flex:1;height:40px;border-radius:8px;background:#ff3b30"></div>
+            <div style="flex:1;height:40px;border-radius:8px;background:#34c759"></div>
+            <div style="flex:1;height:40px;border-radius:8px;background:#1d1d1f"></div>
+          </div>
+          <!-- typography sample -->
+          <div style="background:#fff;border-radius:10px;padding:14px 18px;width:100%;box-shadow:0 4px 16px rgba(0,0,0,.08)">
+            <div style="font-size:1.4rem;font-weight:700;letter-spacing:-.5px;color:#1d1d1f">Aa Bb Cc</div>
+            <div style="font-size:.7rem;color:#6e6e73;margin-top:3px;letter-spacing:1px">BRAND TYPOGRAPHY</div>
+          </div>
+          <!-- logo placeholder -->
+          <div style="background:#1d1d1f;border-radius:10px;padding:14px 28px;display:flex;align-items:center;gap:8px;box-shadow:0 4px 16px rgba(0,0,0,.15)">
+            <div style="width:24px;height:24px;border-radius:50%;background:linear-gradient(135deg,#0071e3,#5ac8fa)"></div>
+            <span style="font-size:.95rem;font-weight:700;color:#fff;letter-spacing:-.3px">YourBrand</span>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <div class="hero-footer">
-    <div class="hero-sub"><p>Scaling brands with data-driven marketing, creative design &amp; powerful digital strategies that convert visitors into customers.</p></div>
-    <div class="hero-actions"><div>
-      <a href="#contact" class="btn-dark"><span>Start a Project →</span></a>
-      <a href="#work" class="btn-ghost">View Our Work</a>
-    </div></div>
-    <div class="scroll-indicator"><div>
-      <div class="si-line"></div>
-      <span class="si-label">Scroll</span>
-    </div></div>
-  </div>
-</section>
+  <!-- FULL WIDTH: India section -->
+  <div class="tile rv" id="india" style="background:linear-gradient(160deg,#0a0a0a 0%,#0d1b2a 60%,#0a1628 100%);color:#fff;min-height:580px">
+    <span class="tile-eyebrow" style="color:#34c759">🇮🇳 Made for India</span>
+    <h2 class="tile-title">Helping Indian brands<br>dominate <span style="background:linear-gradient(135deg,#FF9500,#FF6900);-webkit-background-clip:text;-webkit-text-fill-color:transparent">digitally.</span></h2>
+    <p class="tile-sub" style="color:rgba(255,255,255,.72)">From startups in Noida to enterprises in Mumbai — we've helped brands across Delhi NCR, Bengaluru, Hyderabad, Pune, Chennai, Kolkata, Ahmedabad, Chandigarh and every city in between grow their digital presence.</p>
+    <div class="tile-ctas">
+      <a href="#contact" class="tile-cta-white-filled">Start in India →</a>
+    </div>
+    <div class="tile-visual" style="min-height:280px">
+      <!-- India map SVG with city dots -->
+      <svg viewBox="0 0 400 460" width="320" style="opacity:.85" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="cityGlow" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#0071e3" stop-opacity=".6"/>
+            <stop offset="100%" stop-color="#0071e3" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <!-- Simplified India outline -->
+        <path d="M 160 10 L 180 8 L 210 18 L 240 15 L 270 25 L 295 40 L 310 60 L 305 80 L 315 100 L 320 120 L 330 140 L 325 165 L 340 185 L 350 210 L 340 235 L 330 255 L 310 270 L 290 290 L 270 310 L 250 330 L 230 355 L 210 375 L 195 400 L 185 420 L 180 440 L 175 450 L 170 440 L 160 420 L 148 400 L 140 380 L 130 360 L 110 340 L 95 320 L 80 300 L 70 280 L 60 260 L 55 235 L 50 210 L 55 185 L 62 165 L 70 145 L 75 125 L 72 105 L 80 85 L 85 70 L 95 55 L 110 40 L 130 25 L 148 14 Z"
+          fill="rgba(255,255,255,.06)" stroke="rgba(255,255,255,.2)" stroke-width="1.5"/>
+        <!-- Kashmir -->
+        <path d="M 160 10 L 140 5 L 120 12 L 105 20 L 110 40" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.15)" stroke-width="1"/>
+        <!-- North East bump -->
+        <path d="M 310 60 L 325 55 L 345 65 L 350 85 L 340 95 L 320 100 L 315 100" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.15)" stroke-width="1"/>
 
-<!-- MARQUEE -->
-<div class="marquee">
-  <div class="marquee-inner">
-    <span class="mi-item"><b>Digital Marketing</b><span class="mi-dot"></span></span>
-    <span class="mi-item"><b>Brand Strategy</b><span class="mi-dot"></span></span>
-    <span class="mi-item"><b>Website Development</b><span class="mi-dot"></span></span>
-    <span class="mi-item"><b>Lead Generation</b><span class="mi-dot"></span></span>
-    <span class="mi-item"><b>Content Creation</b><span class="mi-dot"></span></span>
-    <span class="mi-item"><b>Logo Design</b><span class="mi-dot"></span></span>
-    <span class="mi-item"><b>Social Media</b><span class="mi-dot"></span></span>
-    <span class="mi-item"><b>Packaging</b><span class="mi-dot"></span></span>
-    <span class="mi-item"><b>Photography</b><span class="mi-dot"></span></span>
-    <span class="mi-item"><b>Event Marketing</b><span class="mi-dot"></span></span>
-    <span class="mi-item"><b>Digital Marketing</b><span class="mi-dot"></span></span>
-    <span class="mi-item"><b>Brand Strategy</b><span class="mi-dot"></span></span>
-    <span class="mi-item"><b>Website Development</b><span class="mi-dot"></span></span>
-    <span class="mi-item"><b>Lead Generation</b><span class="mi-dot"></span></span>
-    <span class="mi-item"><b>Content Creation</b><span class="mi-dot"></span></span>
-    <span class="mi-item"><b>Logo Design</b><span class="mi-dot"></span></span>
-    <span class="mi-item"><b>Social Media</b><span class="mi-dot"></span></span>
-    <span class="mi-item"><b>Packaging</b><span class="mi-dot"></span></span>
-    <span class="mi-item"><b>Photography</b><span class="mi-dot"></span></span>
-    <span class="mi-item"><b>Event Marketing</b><span class="mi-dot"></span></span>
+        <!-- City dots & rings -->
+        <!-- Delhi NCR -->
+        <circle cx="200" cy="110" r="14" fill="url(#cityGlow)"/>
+        <circle cx="200" cy="110" r="5" fill="#0071e3"/>
+        <text x="218" y="114" fill="rgba(255,255,255,.75)" font-size="9" font-family="sans-serif" font-weight="600">Delhi NCR</text>
+
+        <!-- Mumbai -->
+        <circle cx="130" cy="265" r="14" fill="url(#cityGlow)"/>
+        <circle cx="130" cy="265" r="5" fill="#0071e3"/>
+        <text x="148" y="269" fill="rgba(255,255,255,.75)" font-size="9" font-family="sans-serif" font-weight="600">Mumbai</text>
+
+        <!-- Bengaluru -->
+        <circle cx="195" cy="360" r="12" fill="url(#cityGlow)"/>
+        <circle cx="195" cy="360" r="4" fill="#34c759"/>
+        <text x="212" y="364" fill="rgba(255,255,255,.75)" font-size="9" font-family="sans-serif" font-weight="600">Bengaluru</text>
+
+        <!-- Hyderabad -->
+        <circle cx="218" cy="310" r="12" fill="url(#cityGlow)"/>
+        <circle cx="218" cy="310" r="4" fill="#ff9500"/>
+        <text x="234" y="314" fill="rgba(255,255,255,.75)" font-size="9" font-family="sans-serif" font-weight="600">Hyderabad</text>
+
+        <!-- Chennai -->
+        <circle cx="230" cy="370" r="10" fill="url(#cityGlow)"/>
+        <circle cx="230" cy="370" r="3.5" fill="#ff3b30"/>
+        <text x="245" y="374" fill="rgba(255,255,255,.65)" font-size="8" font-family="sans-serif">Chennai</text>
+
+        <!-- Pune -->
+        <circle cx="148" cy="285" r="10" fill="url(#cityGlow)"/>
+        <circle cx="148" cy="285" r="3.5" fill="#5ac8fa"/>
+        <text x="162" y="289" fill="rgba(255,255,255,.65)" font-size="8" font-family="sans-serif">Pune</text>
+
+        <!-- Kolkata -->
+        <circle cx="280" cy="200" r="10" fill="url(#cityGlow)"/>
+        <circle cx="280" cy="200" r="3.5" fill="#bf5af2"/>
+        <text x="293" y="204" fill="rgba(255,255,255,.65)" font-size="8" font-family="sans-serif">Kolkata</text>
+
+        <!-- Ahmedabad -->
+        <circle cx="118" cy="210" r="10" fill="url(#cityGlow)"/>
+        <circle cx="118" cy="210" r="3.5" fill="#ff6961"/>
+        <text x="132" y="214" fill="rgba(255,255,255,.65)" font-size="8" font-family="sans-serif">Ahmedabad</text>
+
+        <!-- Chandigarh -->
+        <circle cx="182" cy="85" r="8" fill="url(#cityGlow)"/>
+        <circle cx="182" cy="85" r="3" fill="#ffd60a"/>
+        <text x="194" y="89" fill="rgba(255,255,255,.6)" font-size="8" font-family="sans-serif">Chandigarh</text>
+
+        <!-- connection lines -->
+        <line x1="200" y1="110" x2="130" y2="265" stroke="rgba(0,113,227,.3)" stroke-width="1" stroke-dasharray="4 3"/>
+        <line x1="200" y1="110" x2="195" y2="360" stroke="rgba(0,113,227,.25)" stroke-width="1" stroke-dasharray="4 3"/>
+        <line x1="200" y1="110" x2="218" y2="310" stroke="rgba(0,113,227,.2)" stroke-width="1" stroke-dasharray="4 3"/>
+        <line x1="130" y1="265" x2="195" y2="360" stroke="rgba(0,113,227,.2)" stroke-width="1" stroke-dasharray="4 3"/>
+        <line x1="200" y1="110" x2="280" y2="200" stroke="rgba(0,113,227,.2)" stroke-width="1" stroke-dasharray="4 3"/>
+      </svg>
+    </div>
+  </div>
+
+  <!-- ROW 3: 3 small tiles -->
+  <div class="tile-row tile-row-3">
+
+    <!-- Photoshoot -->
+    <div class="tile tile-white rv" style="min-height:360px">
+      <span class="tile-eyebrow" style="color:#ff9500">Photography</span>
+      <h2 class="tile-title" style="font-size:clamp(1.6rem,3vw,2.4rem)">Images that sell.</h2>
+      <p class="tile-sub" style="font-size:.9rem">Professional product and brand photography that makes your audience stop scrolling.</p>
+      <div class="tile-ctas"><a href="#contact" class="tile-cta" style="color:#ff9500">Book a shoot →</a></div>
+      <div class="tile-visual" style="min-height:120px">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;width:100%;max-width:200px">
+          <div style="aspect-ratio:1;border-radius:10px;background:linear-gradient(135deg,#ffcc00,#ff9500)"></div>
+          <div style="aspect-ratio:1;border-radius:10px;background:linear-gradient(135deg,#ff6961,#ff3b30)"></div>
+          <div style="aspect-ratio:1;border-radius:10px;background:linear-gradient(135deg,#5ac8fa,#0071e3)"></div>
+          <div style="aspect-ratio:1;border-radius:10px;background:linear-gradient(135deg,#34c759,#30d158)"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Packaging -->
+    <div class="tile tile-dark rv rv-d1" style="min-height:360px">
+      <span class="tile-eyebrow">Packaging Design</span>
+      <h2 class="tile-title" style="font-size:clamp(1.6rem,3vw,2.4rem)">Shelf-worthy<br>packaging.</h2>
+      <p class="tile-sub" style="font-size:.9rem;color:rgba(245,245,247,.7)">Packaging that jumps off the shelf — online and offline — communicating quality at a glance.</p>
+      <div class="tile-ctas"><a href="#contact" class="tile-cta">Design mine →</a></div>
+      <div class="tile-visual" style="min-height:120px">
+        <div style="position:relative;width:100px;height:140px;transform-style:preserve-3d;animation:boxSpin 8s linear infinite">
+          <div style="position:absolute;width:100px;height:140px;background:linear-gradient(135deg,#2c2c2e,#3a3a3c);border-radius:8px;transform:translateZ(20px);display:flex;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,.1)">
+            <div style="width:50px;height:50px;border-radius:50%;background:linear-gradient(135deg,#0071e3,#5ac8fa)"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <style>@keyframes boxSpin{0%,100%{transform:rotateY(-15deg) rotateX(8deg)}50%{transform:rotateY(15deg) rotateX(-5deg)}}</style>
+
+    <!-- Events / Exhibition -->
+    <div class="tile tile-blue rv rv-d2" style="min-height:360px">
+      <span class="tile-eyebrow">Events & Exhibitions</span>
+      <h2 class="tile-title" style="font-size:clamp(1.6rem,3vw,2.4rem)">Make every<br>stall count.</h2>
+      <p class="tile-sub" style="font-size:.9rem">Exhibition stalls, corporate events and trade fair marketing that generates real business leads.</p>
+      <div class="tile-ctas"><a href="#contact" class="tile-cta-white-filled">Plan my event →</a></div>
+      <div class="tile-visual" style="min-height:120px">
+        <svg viewBox="0 0 200 100" width="90%">
+          <rect x="20" y="20" width="160" height="70" rx="4" fill="rgba(255,255,255,.1)" stroke="rgba(255,255,255,.3)" stroke-width="1"/>
+          <rect x="35" y="30" width="50" height="50" rx="3" fill="rgba(255,255,255,.15)" stroke="rgba(255,255,255,.2)" stroke-width="1"/>
+          <rect x="95" y="30" width="70" height="20" rx="3" fill="rgba(255,255,255,.12)" stroke="rgba(255,255,255,.15)" stroke-width="1"/>
+          <rect x="95" y="58" width="70" height="22" rx="3" fill="rgba(255,255,255,.12)" stroke="rgba(255,255,255,.15)" stroke-width="1"/>
+          <text x="100" y="10" text-anchor="middle" fill="rgba(255,255,255,.5)" font-size="7" font-family="sans-serif" letter-spacing="1">STALL DESIGN</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- CLIENTS SECTION -->
+  <div class="tile tile-off rv" id="clients" style="min-height:400px">
+    <span class="tile-eyebrow" style="color:var(--apple-blue)">Our Clients</span>
+    <h2 class="tile-title" style="font-size:clamp(2rem,4vw,3.5rem)">Brands that trust us.</h2>
+    <p class="tile-sub" style="color:var(--apple-gray)">50+ businesses across India have chosen Digitract to power their digital growth.</p>
+    <div class="tile-visual">
+      <div class="brand-logos">
+        <div class="brand-logo-item">FashionIndia</div>
+        <div class="brand-logo-item">ZenYoga Co.</div>
+        <div class="brand-logo-item">NovaTech IN</div>
+        <div class="brand-logo-item">SpiceCraft</div>
+        <div class="brand-logo-item">MedPlus Pro</div>
+        <div class="brand-logo-item">EcoWear</div>
+        <div class="brand-logo-item">CityBuild</div>
+        <div class="brand-logo-item">SwiftDeals</div>
+        <div class="brand-logo-item">PureHealth</div>
+        <div class="brand-logo-item">LuxeStay</div>
+        <div class="brand-logo-item">KidsWorld</div>
+        <div class="brand-logo-item">AutoParts IN</div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- end apple-grid -->
+
+<!-- ══ STATS BAR ══ -->
+<div class="stats-bar rv">
+  <div class="stats-inner">
+    <div class="stat-item"><div class="stat-n" data-target="100">0</div><div class="stat-l">Projects Completed</div></div>
+    <div class="stat-item"><div class="stat-n" data-target="50">0</div><div class="stat-l">Brands Scaled</div></div>
+    <div class="stat-item"><div class="stat-n">320%</div><div class="stat-l">Average Campaign ROI</div></div>
+    <div class="stat-item"><div class="stat-n">9+</div><div class="stat-l">Cities Across India</div></div>
   </div>
 </div>
 
-<!-- ═══════════════════════════════════ WORK ═══════════════════════════════════ -->
-<section id="work">
-  <div class="wrap">
-    <div class="work-header rv">
-      <div class="work-title-group">
-        <span class="sec-tag">Selected Work</span>
-        <h2><em>Our</em> Projects</h2>
-      </div>
-      <p class="work-desc">We are a diligent team, passionate about turning ideas into digital realities — strategy through execution.</p>
-    </div>
+<!-- ══ TESTIMONIALS ══ -->
+<div class="testimonials-section" id="about">
+  <div class="testimonials-header rv">
+    <div class="sec-eyebrow">Client Stories</div>
+    <h2>What our clients say.</h2>
   </div>
-  <div class="work-grid rv rv-d1">
-    <div class="work-item">
-      <span class="wi-num">01</span>
-      <span class="wi-name">Performance Campaign</span>
-      <div class="wi-tags"><span class="wi-tag">PPC</span><span class="wi-tag">Analytics</span><span class="wi-tag">ROI</span></div>
-      <span class="wi-arrow">↗</span>
+  <div class="tgrid">
+
+    <div class="tcard rv">
+      <div class="tcard-stars">★★★★★</div>
+      <p class="tcard-quote">"Digitract transformed our entire digital presence in just 3 months. Our lead cost dropped from ₹380 to ₹48 per lead through Meta Ads. Absolutely remarkable — they genuinely understand the Indian market."</p>
+      <div class="tcard-author">
+        <div class="tcard-avatar" style="background:linear-gradient(135deg,#0071e3,#5ac8fa)">R</div>
+        <div>
+          <div class="tcard-name">Rahul Sharma</div>
+          <div class="tcard-role">Founder, FashionIndia · New Delhi</div>
+        </div>
+      </div>
     </div>
-    <div class="work-item">
-      <span class="wi-num">02</span>
-      <span class="wi-name">Brand Identity System</span>
-      <div class="wi-tags"><span class="wi-tag">Logo</span><span class="wi-tag">Typography</span><span class="wi-tag">Guidelines</span></div>
-      <span class="wi-arrow">↗</span>
+
+    <div class="tcard rv rv-d1">
+      <div class="tcard-stars">★★★★★</div>
+      <p class="tcard-quote">"We tried three agencies before Digitract. None of them understood regional targeting in Maharashtra the way these guys do. Our website traffic tripled and sales followed. Best investment we made this year."</p>
+      <div class="tcard-author">
+        <div class="tcard-avatar" style="background:linear-gradient(135deg,#ff9500,#ff6900)">P</div>
+        <div>
+          <div class="tcard-name">Priya Kulkarni</div>
+          <div class="tcard-role">CEO, SpiceCraft · Mumbai</div>
+        </div>
+      </div>
     </div>
-    <div class="work-item">
-      <span class="wi-num">03</span>
-      <span class="wi-name">E-Commerce Website</span>
-      <div class="wi-tags"><span class="wi-tag">UI/UX</span><span class="wi-tag">Dev</span><span class="wi-tag">SEO</span></div>
-      <span class="wi-arrow">↗</span>
+
+    <div class="tcard rv rv-d2">
+      <div class="tcard-stars">★★★★★</div>
+      <p class="tcard-quote">"Our Google Ads ROAS went from 1.8× to 8.4× within 60 days. The team at Digitract is data-obsessed in the best possible way. They treat every rupee of ad spend as if it's their own money."</p>
+      <div class="tcard-author">
+        <div class="tcard-avatar" style="background:linear-gradient(135deg,#34c759,#30d158)">A</div>
+        <div>
+          <div class="tcard-name">Arjun Nair</div>
+          <div class="tcard-role">MD, NovaTech India · Bengaluru</div>
+        </div>
+      </div>
     </div>
-    <div class="work-item">
-      <span class="wi-num">04</span>
-      <span class="wi-name">Social Media Growth</span>
-      <div class="wi-tags"><span class="wi-tag">Instagram</span><span class="wi-tag">Reels</span><span class="wi-tag">Ads</span></div>
-      <span class="wi-arrow">↗</span>
+
+    <div class="tcard rv">
+      <div class="tcard-stars">★★★★★</div>
+      <p class="tcard-quote">"The branding and packaging they designed for us helped us get listed on Blinkit and Zepto within weeks. Our Instagram grew from 800 to 28,000 followers in 4 months. Incredible work, Eshaan and team!"</p>
+      <div class="tcard-author">
+        <div class="tcard-avatar" style="background:linear-gradient(135deg,#bf5af2,#9b33d4)">S</div>
+        <div>
+          <div class="tcard-name">Sneha Agarwal</div>
+          <div class="tcard-role">Co-Founder, PureHealth · Jaipur</div>
+        </div>
+      </div>
     </div>
-    <div class="work-item">
-      <span class="wi-num">05</span>
-      <span class="wi-name">Product Packaging Design</span>
-      <div class="wi-tags"><span class="wi-tag">Print</span><span class="wi-tag">3D</span><span class="wi-tag">Brand</span></div>
-      <span class="wi-arrow">↗</span>
+
+    <div class="tcard rv rv-d1">
+      <div class="tcard-stars">★★★★★</div>
+      <p class="tcard-quote">"Avinash and the team delivered our e-commerce website in under 3 weeks — fully optimised for mobile and SEO. We rank on page 1 for our top keywords now. For a Hyderabad startup, this was a game changer."</p>
+      <div class="tcard-author">
+        <div class="tcard-avatar" style="background:linear-gradient(135deg,#ff3b30,#d32f2f)">K</div>
+        <div>
+          <div class="tcard-name">Kiran Reddy</div>
+          <div class="tcard-role">Founder, SwiftDeals · Hyderabad</div>
+        </div>
+      </div>
     </div>
-    <div class="work-item">
-      <span class="wi-num">06</span>
-      <span class="wi-name">Corporate Event Campaign</span>
-      <div class="wi-tags"><span class="wi-tag">Stall</span><span class="wi-tag">Print</span><span class="wi-tag">Digital</span></div>
-      <span class="wi-arrow">↗</span>
+
+    <div class="tcard rv rv-d2">
+      <div class="tcard-stars">★★★★★</div>
+      <p class="tcard-quote">"We hired Digitract for our trade fair booth at an expo in Delhi. The stall design and on-ground promotion brought us 3× more footfall than the previous year. They are the real deal for Indian businesses."</p>
+      <div class="tcard-author">
+        <div class="tcard-avatar" style="background:linear-gradient(135deg,#ffd60a,#ff9500)">V</div>
+        <div>
+          <div class="tcard-name">Vikram Mehta</div>
+          <div class="tcard-role">Director, CityBuild · Pune</div>
+        </div>
+      </div>
     </div>
+
   </div>
-</section>
+</div>
 
-<!-- ═══════════════════════════════════ SERVICES ═══════════════════════════════════ -->
-<section id="services">
-  <div class="wrap">
-    <div class="services-header rv">
-      <div>
-        <span class="sec-tag">What We Do</span>
-        <h2 class="big-h">Our <em>Services</em></h2>
-      </div>
-      <p class="services-desc">We are an unusual digital agency focused on transforming your vision into a captivating brand experience.</p>
-    </div>
-    <div class="services-accordion rv rv-d1">
-
-      <div class="sa-item open">
-        <div class="sa-header" onclick="toggleSA(this)">
-          <div class="sa-left"><span class="sa-num">01</span><span class="sa-title">Digital Marketing</span></div>
-          <div class="sa-toggle">+</div>
-        </div>
-        <div class="sa-body"><div class="sa-body-inner">
-          <div class="sa-tags"><span class="sa-tag">SEO</span><span class="sa-tag">PPC</span><span class="sa-tag">Analytics</span><span class="sa-tag">Strategy</span></div>
-          <p class="sa-copy">Performance campaigns that generate leads &amp; maximise ROI. We understand your audience, craft compelling messages and drive sustainable growth.</p>
-        </div></div>
-      </div>
-
-      <div class="sa-item">
-        <div class="sa-header" onclick="toggleSA(this)">
-          <div class="sa-left"><span class="sa-num">02</span><span class="sa-title">Website Development</span></div>
-          <div class="sa-toggle">+</div>
-        </div>
-        <div class="sa-body"><div class="sa-body-inner">
-          <div class="sa-tags"><span class="sa-tag">UI/UX</span><span class="sa-tag">CMS</span><span class="sa-tag">Speed</span><span class="sa-tag">Mobile</span></div>
-          <p class="sa-copy">Stunning, fast-loading websites optimised for conversions. We work closely with you to ensure the final product surpasses your expectations.</p>
-        </div></div>
-      </div>
-
-      <div class="sa-item">
-        <div class="sa-header" onclick="toggleSA(this)">
-          <div class="sa-left"><span class="sa-num">03</span><span class="sa-title">Branding &amp; Identity</span></div>
-          <div class="sa-toggle">+</div>
-        </div>
-        <div class="sa-body"><div class="sa-body-inner">
-          <div class="sa-tags"><span class="sa-tag">Logo</span><span class="sa-tag">Colour</span><span class="sa-tag">Typography</span><span class="sa-tag">Guidelines</span></div>
-          <p class="sa-copy">Complete brand identity systems. We develop a consistent brand voice ensuring all messages align with your tone, values and goals.</p>
-        </div></div>
-      </div>
-
-      <div class="sa-item">
-        <div class="sa-header" onclick="toggleSA(this)">
-          <div class="sa-left"><span class="sa-num">04</span><span class="sa-title">Content &amp; Social Media</span></div>
-          <div class="sa-toggle">+</div>
-        </div>
-        <div class="sa-body"><div class="sa-body-inner">
-          <div class="sa-tags"><span class="sa-tag">Reels</span><span class="sa-tag">Copy</span><span class="sa-tag">Instagram</span><span class="sa-tag">Facebook</span></div>
-          <p class="sa-copy">Reels, graphics &amp; visual stories that engage and convert your audience. Scroll-stopping creative backed by data.</p>
-        </div></div>
-      </div>
-
-      <div class="sa-item">
-        <div class="sa-header" onclick="toggleSA(this)">
-          <div class="sa-left"><span class="sa-num">05</span><span class="sa-title">Photoshoot &amp; Packaging</span></div>
-          <div class="sa-toggle">+</div>
-        </div>
-        <div class="sa-body"><div class="sa-body-inner">
-          <div class="sa-tags"><span class="sa-tag">Product</span><span class="sa-tag">Brand</span><span class="sa-tag">Print</span><span class="sa-tag">3D</span></div>
-          <p class="sa-copy">Professional brand &amp; product photography plus shelf-worthy packaging that communicates quality and builds trust instantly.</p>
-        </div></div>
-      </div>
-
-      <div class="sa-item">
-        <div class="sa-header" onclick="toggleSA(this)">
-          <div class="sa-left"><span class="sa-num">06</span><span class="sa-title">Exhibition &amp; Event Marketing</span></div>
-          <div class="sa-toggle">+</div>
-        </div>
-        <div class="sa-body"><div class="sa-body-inner">
-          <div class="sa-tags"><span class="sa-tag">Stall Design</span><span class="sa-tag">Corporate</span><span class="sa-tag">Promotion</span></div>
-          <p class="sa-copy">Eye-catching exhibition stalls and end-to-end event promotion driving registrations and brand buzz that lasts beyond the event.</p>
-        </div></div>
-      </div>
-
-      <div class="sa-item">
-        <div class="sa-header" onclick="toggleSA(this)">
-          <div class="sa-left"><span class="sa-num">07</span><span class="sa-title">Niche Industry Marketing</span></div>
-          <div class="sa-toggle">+</div>
-        </div>
-        <div class="sa-body"><div class="sa-body-inner">
-          <div class="sa-tags"><span class="sa-tag">Yoga</span><span class="sa-tag">Interior Design</span><span class="sa-tag">Wellness</span></div>
-          <p class="sa-copy">Niche campaigns for yoga products, interior design brands and wellness businesses — reaching health-conscious and design-savvy audiences.</p>
-        </div></div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════ WHY US ═══════════════════════════════════ -->
-<section id="why">
-  <div class="wrap">
-    <div class="why-grid">
-      <div>
-        <span class="sec-tag rv">Why Choose Us</span>
-        <h2 class="big-h rv rv-d1">Why<br><em>Digitract?</em></h2>
-        <blockquote class="why-pull rv rv-d2">"We don't just run campaigns — we build growth systems that compound over time."</blockquote>
-        <div class="why-list rv rv-d3">
-          <div class="wl-item">
-            <div class="wl-ic">📈</div>
-            <div><div class="wl-label">Result-Driven Strategies</div><div class="wl-copy">Every campaign measured against real business outcomes — traffic, leads, and revenue.</div></div>
-          </div>
-          <div class="wl-item">
-            <div class="wl-ic">🎯</div>
-            <div><div class="wl-label">Creative + Performance</div><div class="wl-copy">Storytelling backed by data that drives measurable conversions.</div></div>
-          </div>
-          <div class="wl-item">
-            <div class="wl-ic">💰</div>
-            <div><div class="wl-label">Startup-Friendly Pricing</div><div class="wl-copy">Premium agency quality without the bloated retainer.</div></div>
-          </div>
-          <div class="wl-item">
-            <div class="wl-ic">⚡</div>
-            <div><div class="wl-label">Fast Turnaround</div><div class="wl-copy">Strategy to launch in weeks, not months. We move at startup speed.</div></div>
-          </div>
-          <div class="wl-item">
-            <div class="wl-ic">🤝</div>
-            <div><div class="wl-label">Personalised Support</div><div class="wl-copy">Your dedicated team — a real relationship, not a support ticket.</div></div>
-          </div>
-        </div>
-      </div>
-      <div class="stats-panel rv rv-d2">
-        <div class="sp-cell">
-          <div class="sp-num" data-target="100">0</div>
-          <div class="sp-label">Projects Completed</div>
-        </div>
-        <div class="sp-cell">
-          <div class="sp-num" data-target="50">0</div>
-          <div class="sp-label">Happy Clients</div>
-        </div>
-        <div class="sp-cell">
-          <div class="sp-num">3×</div>
-          <div class="sp-label">Average Campaign ROI</div>
-        </div>
-        <div class="sp-cell">
-          <div class="sp-num">12+</div>
-          <div class="sp-label">Services Offered</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════ ABOUT ═══════════════════════════════════ -->
-<section id="about">
-  <div class="wrap">
-    <div class="about-grid">
-      <div class="about-text">
-        <span class="sec-tag rv">Our Studio</span>
-        <h2 class="big-h rv rv-d1">We Build<br><em>Growth</em><br>Systems.</h2>
-        <p class="about-copy rv rv-d2">At Digitract, we don't just market — we create <em>growth systems</em>. From strategy to execution, we help brands <em>stand out</em>, scale fast, and <em>dominate digitally</em>. We are a diligent team passionate about turning bold ideas into measurable results.</p>
-        <div class="about-pills rv rv-d3">
-          <span class="apill">New Delhi, India</span>
-          <span class="apill">Global Reach</span>
-          <span class="apill">Data-First</span>
-          <span class="apill">Creative-Led</span>
-          <span class="apill">Fast Execution</span>
-          <span class="apill">Measurable ROI</span>
-        </div>
-      </div>
-      <div class="about-visual rv rv-d2">
-        <div class="av-main">
-          <svg class="av-svg" viewBox="0 0 440 520" xmlns="http://www.w3.org/2000/svg">
-            <!-- grid -->
-            <defs>
-              <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-                <path d="M40 0L0 0 0 40" fill="none" stroke="#e0ddd6" stroke-width=".5"/>
-              </pattern>
-            </defs>
-            <rect width="440" height="520" fill="url(#grid)"/>
-            <!-- big D letter -->
-            <text x="50%" y="55%" text-anchor="middle" dominant-baseline="middle" font-family="'Playfair Display',serif" font-size="260" font-weight="900" fill="#0a0a0a" fill-opacity=".06">D</text>
-            <!-- circles -->
-            <circle cx="220" cy="260" r="110" fill="none" stroke="#0a0a0a" stroke-opacity=".08" stroke-width="1"/>
-            <circle cx="220" cy="260" r="170" fill="none" stroke="#0a0a0a" stroke-opacity=".05" stroke-width="1"/>
-            <!-- dot -->
-            <circle cx="220" cy="260" r="5" fill="#0a0a0a" fill-opacity=".4"/>
-            <!-- growth line -->
-            <polyline points="60,420 100,380 160,340 220,280 290,230 360,170 400,140" fill="none" stroke="#0a0a0a" stroke-opacity=".15" stroke-width="1.5" stroke-dasharray="5 4"/>
-            <!-- dots on line -->
-            <circle cx="100" cy="380" r="3" fill="#0a0a0a" fill-opacity=".2"/>
-            <circle cx="220" cy="280" r="3" fill="#0a0a0a" fill-opacity=".2"/>
-            <circle cx="360" cy="170" r="3" fill="#0a0a0a" fill-opacity=".2"/>
-            <!-- label -->
-            <text x="24" y="496" font-family="'DM Sans',sans-serif" font-size="9" letter-spacing="2" fill="#888880" text-transform="uppercase">EST. 2022 · NEW DELHI</text>
-          </svg>
-        </div>
-        <div class="av-badge">
-          <span>Award<br>Winning<br>Agency</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════ PORTFOLIO ═══════════════════════════════════ -->
-<section id="portfolio">
-  <div class="wrap">
-    <div class="portfolio-header rv">
-      <div>
-        <span class="sec-tag">Visual Work</span>
-        <h2 class="big-h"><em>Portfolio</em></h2>
-      </div>
-      <a href="#contact" class="btn-ghost">Start Your Project →</a>
-    </div>
-  </div>
-  <div style="padding:0 6%;max-width:1320px;margin:0 auto">
-    <div class="pg rv rv-d1">
-      <div class="pg-item">
-        <div class="pg-inner" style="background:linear-gradient(135deg,#f0ede6,#e8e4d8)">
-          <svg width="60%" height="60%" viewBox="0 0 300 200">
-            <rect x="20" y="20" width="260" height="160" rx="4" fill="none" stroke="#0a0a0a" stroke-opacity=".1" stroke-width="1"/>
-            <rect x="40" y="100" width="28" height="60" rx="2" fill="#0a0a0a" fill-opacity=".1"/>
-            <rect x="82" y="70" width="28" height="90" rx="2" fill="#0a0a0a" fill-opacity=".18"/>
-            <rect x="124" y="55" width="28" height="105" rx="2" fill="#0a0a0a" fill-opacity=".25"/>
-            <rect x="166" y="40" width="28" height="120" rx="2" fill="#0a0a0a" fill-opacity=".35"/>
-            <rect x="208" y="28" width="28" height="132" rx="2" fill="#0a0a0a" fill-opacity=".5"/>
-          </svg>
-        </div>
-        <div class="pg-overlay"><div class="pg-info"><div class="pg-n">01</div><div class="pg-title">Performance Campaign</div><div class="pg-sub">Digital Marketing · 2024</div></div></div>
-        <div class="pg-arr">↗</div>
-      </div>
-      <div class="pg-item">
-        <div class="pg-inner" style="background:linear-gradient(135deg,#e8e4f4,#d8d0f0)">
-          <svg width="55%" height="55%" viewBox="0 0 300 200">
-            <circle cx="150" cy="100" r="60" fill="none" stroke="#0a0a0a" stroke-opacity=".15" stroke-width="1"/>
-            <circle cx="150" cy="100" r="100" fill="none" stroke="#0a0a0a" stroke-opacity=".07" stroke-width="1"/>
-            <text x="150" y="107" text-anchor="middle" font-family="serif" font-size="36" font-weight="900" fill="#0a0a0a" fill-opacity=".3">DT</text>
-          </svg>
-        </div>
-        <div class="pg-overlay"><div class="pg-info"><div class="pg-n">02</div><div class="pg-title">Brand Identity</div><div class="pg-sub">Branding · 2024</div></div></div>
-        <div class="pg-arr">↗</div>
-      </div>
-      <div class="pg-item pg-wide">
-        <div class="pg-inner" style="background:linear-gradient(135deg,#0a0a0a,#1a1a2e)">
-          <svg width="70%" height="80%" viewBox="0 0 700 200">
-            <text x="350" y="130" text-anchor="middle" font-family="'Playfair Display',serif" font-size="100" font-weight="900" fill="#fff" fill-opacity=".12" letter-spacing="-4">DIGITRACT</text>
-            <line x1="60" y1="165" x2="640" y2="165" stroke="#fff" stroke-opacity=".06" stroke-width=".5"/>
-          </svg>
-        </div>
-        <div class="pg-overlay"><div class="pg-info"><div class="pg-n">03</div><div class="pg-title">Multi-Channel E-Commerce Launch</div><div class="pg-sub">Full-Service Campaign · 2024</div></div></div>
-        <div class="pg-arr">↗</div>
-      </div>
-      <div class="pg-item">
-        <div class="pg-inner" style="background:linear-gradient(135deg,#e6f4e8,#d0ecd4)">
-          <svg width="60%" height="60%" viewBox="0 0 300 200">
-            <rect x="30" y="30" width="240" height="140" rx="4" fill="none" stroke="#0a0a0a" stroke-opacity=".1" stroke-width="1"/>
-            <rect x="50" y="50" width="90" height="100" rx="3" fill="#0a0a0a" fill-opacity=".07"/>
-            <line x1="160" y1="70" x2="250" y2="70" stroke="#0a0a0a" stroke-opacity=".12" stroke-width="1"/>
-            <line x1="160" y1="90" x2="230" y2="90" stroke="#0a0a0a" stroke-opacity=".08" stroke-width="1"/>
-            <line x1="160" y1="110" x2="240" y2="110" stroke="#0a0a0a" stroke-opacity=".1" stroke-width="1"/>
-          </svg>
-        </div>
-        <div class="pg-overlay"><div class="pg-info"><div class="pg-n">04</div><div class="pg-title">Website Redesign</div><div class="pg-sub">UI/UX · 2024</div></div></div>
-        <div class="pg-arr">↗</div>
-      </div>
-      <div class="pg-item">
-        <div class="pg-inner" style="background:linear-gradient(135deg,#f4ede6,#f0e0d0)">
-          <svg width="60%" height="60%" viewBox="0 0 300 200">
-            <rect x="80" y="40" width="140" height="130" rx="4" fill="none" stroke="#0a0a0a" stroke-opacity=".15" stroke-width="1"/>
-            <rect x="100" y="60" width="100" height="80" rx="2" fill="#0a0a0a" fill-opacity=".06"/>
-            <rect x="90" y="148" width="120" height="12" rx="2" fill="#0a0a0a" fill-opacity=".1"/>
-            <circle cx="150" cy="100" r="18" fill="#0a0a0a" fill-opacity=".12"/>
-          </svg>
-        </div>
-        <div class="pg-overlay"><div class="pg-info"><div class="pg-n">05</div><div class="pg-title">Packaging Design</div><div class="pg-sub">Print · Brand · 2024</div></div></div>
-        <div class="pg-arr">↗</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════ DON'T BE SHY ═══════════════════════════════════ -->
-<section id="shy">
-  <div class="shy-bg-word">GROW</div>
-  <div class="shy-content">
-    <div class="shy-label rv">Ready to start?</div>
-    <h2 class="shy-h rv rv-d1">Don't<br>be <em>shy.</em></h2>
-    <p class="shy-sub rv rv-d2">Let Digitract take your business to the next level.</p>
-    <div class="shy-btns rv rv-d3">
-      <a href="#contact" class="btn-dark"><span>Chat with Digitract →</span></a>
-      <a href="https://wa.me/919318459629" target="_blank" class="btn-ghost">Book a Meeting</a>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════ CONTACT ═══════════════════════════════════ -->
-<section id="contact">
-  <div class="wrap">
-    <div class="contact-grid">
-      <div class="contact-left">
-        <span class="sec-tag rv">Get In Touch</span>
-        <h2 class="big-h rv rv-d1">Let's Build<br><em>Something</em><br>Great.</h2>
-        <p class="contact-tagline rv rv-d2">Ready to scale your brand? Tell us about your project and we'll respond within 24 hours.</p>
-        <div class="contact-rows rv rv-d3">
-          <div class="cr">
-            <div class="cr-ic">📞</div>
-            <div><div class="cr-lbl">Call Eshaan</div><div class="cr-val"><a href="tel:+919318459629">+91 93184 59629</a></div></div>
-          </div>
-          <div class="cr">
-            <div class="cr-ic">📞</div>
-            <div><div class="cr-lbl">Call Avinash</div><div class="cr-val"><a href="tel:+918595763105">+91 85957 63105</a></div></div>
-          </div>
-          <div class="cr">
-            <div class="cr-ic">✉️</div>
-            <div><div class="cr-lbl">Email</div><div class="cr-val"><a href="mailto:Avinash701176@gmail.com">Avinash701176@gmail.com</a><br><a href="mailto:digitractwork@gmail.com">digitractwork@gmail.com</a></div></div>
-          </div>
-          <div class="cr">
-            <div class="cr-ic">📍</div>
-            <div><div class="cr-lbl">Location</div><div class="cr-val">New Delhi, India</div></div>
-          </div>
-        </div>
-        <div class="social-row rv rv-d4">
-          <a href="https://www.facebook.com/share/1b1xE8rDcE/" target="_blank" class="sb">Facebook ↗</a>
-          <a href="https://www.instagram.com/digitaladvertiser._" target="_blank" class="sb">Instagram ↗</a>
-          <a href="https://wa.me/919318459629" target="_blank" class="sb">WhatsApp ↗</a>
-        </div>
-      </div>
-      <div class="cf rv rv-d2">
-        <div class="cf-title">Free Strategy Call</div>
-        <div id="cf-ok" class="cf-ok">Message received. We'll be in touch within 24 hours.</div>
-        <div id="cf-f">
+<!-- ══ CONTACT ══ -->
+<div class="contact-section" id="contact">
+  <div class="contact-inner rv">
+    <h2>Let's grow your brand.</h2>
+    <p>Free strategy call for Indian businesses. No commitment required.</p>
+    <div class="apple-form">
+      <div id="form-ok" class="form-ok">✓ We'll reach out within 24 hours. Welcome to Digitract!</div>
+      <div id="form-fields">
+        <div class="form-row">
           <div class="fg"><label>Full Name</label><input type="text" id="fn" placeholder="Your name"/></div>
-          <div class="fg"><label>Phone Number</label><input type="tel" id="fp" placeholder="+91 XXXXX XXXXX"/></div>
-          <div class="fg"><label>Email Address</label><input type="email" id="fe" placeholder="you@example.com"/></div>
-          <div class="fg"><label>Service Interested In</label>
-            <select id="fs">
-              <option value="">Select a service…</option>
-              <option>Digital Marketing</option>
-              <option>Website Development</option>
-              <option>Photoshoot</option>
-              <option>Product Packaging Design</option>
-              <option>Branding & Designing</option>
-              <option>Content Creation</option>
-              <option>Content Writing</option>
-              <option>Yoga Product Marketing</option>
-              <option>Interior Design Marketing</option>
-              <option>Stall Design (Exhibition)</option>
-              <option>Corporate Event Marketing</option>
-              <option>Logo Design</option>
-            </select>
-          </div>
-          <div class="fg"><label>Message</label><textarea id="fm" placeholder="Tell us about your project…"></textarea></div>
-          <button class="cf-btn" onclick="submitF()"><span>Get Free Strategy Call →</span></button>
+          <div class="fg"><label>Phone</label><input type="tel" id="fp" placeholder="+91 XXXXX XXXXX"/></div>
         </div>
+        <div class="fg"><label>Email</label><input type="email" id="fe" placeholder="you@example.com"/></div>
+        <div class="fg"><label>Service Interested In</label>
+          <select id="fs">
+            <option value="">Select a service…</option>
+            <option>Performance Marketing (Meta/Google Ads)</option>
+            <option>SEO & Content Marketing</option>
+            <option>Social Media Marketing</option>
+            <option>Website Development</option>
+            <option>Branding & Identity</option>
+            <option>Photoshoot</option>
+            <option>Product Packaging Design</option>
+            <option>Content Creation</option>
+            <option>Content Writing</option>
+            <option>Yoga Product Marketing</option>
+            <option>Interior Design Marketing</option>
+            <option>Stall Design (Exhibition)</option>
+            <option>Corporate Event Marketing</option>
+            <option>Logo Design</option>
+          </select>
+        </div>
+        <div class="fg"><label>Tell us about your business</label><textarea id="fm" placeholder="Brand name, current challenges, target market in India…"></textarea></div>
+        <button class="apple-submit" onclick="submitF()">Get Free Strategy Call</button>
       </div>
     </div>
+    <p style="margin-top:20px;font-size:.8rem;color:var(--apple-gray)">
+      📞 Eshaan: <a href="tel:+919318459629" style="color:var(--apple-blue)">+91 93184 59629</a> &nbsp;·&nbsp;
+      📞 Avinash: <a href="tel:+918595763105" style="color:var(--apple-blue)">+91 85957 63105</a><br>
+      ✉️ <a href="mailto:digitractwork@gmail.com" style="color:var(--apple-blue)">digitractwork@gmail.com</a>
+    </p>
   </div>
-</section>
+</div>
 
-<!-- FOOTER -->
-<footer>
-  <a href="#hero" class="fl">Digitract</a>
-  <div class="fc">© 2024 Digitract · Creative Digital Agency · India</div>
-  <div class="flinks">
-    <a href="#work">Work</a>
-    <a href="#services">Services</a>
-    <a href="#about">Studio</a>
-    <a href="https://www.instagram.com/digitaladvertiser._" target="_blank">Instagram</a>
-    <a href="https://www.facebook.com/share/1b1xE8rDcE/" target="_blank">Facebook</a>
+</main><!-- end main -->
+
+<!-- ══ FOOTER ══ -->
+<footer id="footer">
+  <div class="footer-top">
+    More ways to connect: <a href="https://www.instagram.com/digitaladvertiser._" target="_blank">Instagram</a> or <a href="https://www.facebook.com/share/1b1xE8rDcE/" target="_blank">Facebook</a> · Or WhatsApp us: <a href="https://wa.me/919318459629" target="_blank">+91 93184 59629</a>
+  </div>
+  <div class="footer-cols">
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#performance">Performance Marketing</a></li>
+        <li><a href="#services">SEO & Content</a></li>
+        <li><a href="#services">Social Media</a></li>
+        <li><a href="#services">Website Development</a></li>
+        <li><a href="#services">Branding & Identity</a></li>
+        <li><a href="#services">Photography</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>More Services</h4>
+      <ul>
+        <li><a href="#services">Packaging Design</a></li>
+        <li><a href="#services">Content Creation</a></li>
+        <li><a href="#services">Content Writing</a></li>
+        <li><a href="#services">Yoga Marketing</a></li>
+        <li><a href="#services">Interior Design Mktg</a></li>
+        <li><a href="#services">Logo Design</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Industries</h4>
+      <ul>
+        <li><a href="#india">E-Commerce</a></li>
+        <li><a href="#india">Fashion & Apparel</a></li>
+        <li><a href="#india">Health & Wellness</a></li>
+        <li><a href="#india">Real Estate</a></li>
+        <li><a href="#india">F&B & Restaurants</a></li>
+        <li><a href="#india">Startups & SaaS</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>India Locations</h4>
+      <ul>
+        <li><a href="#india">Delhi NCR</a></li>
+        <li><a href="#india">Mumbai</a></li>
+        <li><a href="#india">Bengaluru</a></li>
+        <li><a href="#india">Hyderabad</a></li>
+        <li><a href="#india">Pune</a></li>
+        <li><a href="#india">All India</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Digitract</h4>
+      <ul>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#clients">Our Work</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="https://www.instagram.com/digitaladvertiser._" target="_blank">Instagram</a></li>
+        <li><a href="https://www.facebook.com/share/1b1xE8rDcE/" target="_blank">Facebook</a></li>
+        <li><a href="https://wa.me/919318459629" target="_blank">WhatsApp</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">Copyright © 2024 Digitract. All rights reserved.</span>
+    <div class="footer-legal">
+      <a href="#" onclick="return false">Privacy Policy</a>
+      <a href="#" onclick="return false">Terms of Use</a>
+      <a href="#contact">Contact Digitract</a>
+      <span style="font-size:.72rem;color:var(--apple-gray)">🇮🇳 India</span>
+    </div>
   </div>
 </footer>
 
 <script>
-// ── LOADER ──
-window.addEventListener('load',()=>setTimeout(()=>document.getElementById('loader').classList.add('out'),2200));
-
-// ── CURSOR ──
-const cur=document.getElementById('cur'),co=document.getElementById('cur-outer');
-let mx=0,my=0,ox=0,oy=0;
-document.addEventListener('mousemove',e=>{
-  mx=e.clientX;my=e.clientY;
-  cur.style.left=mx+'px';cur.style.top=my+'px';
-});
-(function loop(){ox+=(mx-ox)*.1;oy+=(my-oy)*.1;co.style.left=ox+'px';co.style.top=oy+'px';requestAnimationFrame(loop)})();
-const hoverEls=document.querySelectorAll('a,button,.work-item,.sa-header,.wl-item,.cr,.sp-cell,.pg-item');
-hoverEls.forEach(el=>{
-  el.addEventListener('mouseenter',()=>document.body.classList.add('hovering'));
-  el.addEventListener('mouseleave',()=>document.body.classList.remove('hovering'));
+/* NAV SCROLL */
+window.addEventListener('scroll',()=>{
+  const scrolled=window.scrollY>10;
+  document.getElementById('gnav').style.borderBottomColor=scrolled?'rgba(0,0,0,.12)':'rgba(0,0,0,.08)';
 });
 
-// ── NAVBAR SCROLL ──
-window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('scrolled',scrollY>60));
-
-// ── MOBILE NAV ──
-document.getElementById('ham').addEventListener('click',()=>document.getElementById('mob').classList.toggle('open'));
-function cm(){document.getElementById('mob').classList.remove('open')}
-
-// ── ACCORDION ──
-function toggleSA(hdr){
-  const item=hdr.closest('.sa-item');
-  document.querySelectorAll('.sa-item.open').forEach(el=>{if(el!==item)el.classList.remove('open')});
-  item.classList.toggle('open');
+/* HAMBURGER */
+document.getElementById('ham').addEventListener('click',()=>{
+  const mob=document.getElementById('mob-overlay');
+  const isOpen=mob.classList.toggle('open');
+  const spans=document.querySelectorAll('#ham span');
+  if(isOpen){spans[0].style.transform='rotate(45deg) translate(4px,4.5px)';spans[1].style.opacity='0';spans[2].style.transform='rotate(-45deg) translate(4px,-4.5px)'}
+  else{spans.forEach(s=>{s.style.transform='';s.style.opacity=''})}
+});
+function cm(){
+  document.getElementById('mob-overlay').classList.remove('open');
+  document.querySelectorAll('#ham span').forEach(s=>{s.style.transform='';s.style.opacity=''});
 }
 
-// ── SCROLL REVEAL ──
-const rv=document.querySelectorAll('.rv,.rv-l');
-new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')}),{threshold:.1}).observe||
-(()=>{})();
+/* REVEAL */
 (()=>{
-  const ob=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')}),{threshold:.1});
-  rv.forEach(el=>ob.observe(el));
+  const ob=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')}),{threshold:.08});
+  document.querySelectorAll('.rv').forEach(el=>ob.observe(el));
 })();
 
-// ── COUNTERS ──
-const cnOb=new IntersectionObserver(es=>es.forEach(e=>{
-  if(!e.isIntersecting)return;
-  const t=parseInt(e.target.dataset.target);
-  if(!t)return;
-  let c=0;const step=Math.ceil(t/50);
-  const iv=setInterval(()=>{c=Math.min(c+step,t);e.target.textContent=c+'+';if(c>=t)clearInterval(iv)},25);
-  cnOb.unobserve(e.target);
-}),{threshold:.5});
-document.querySelectorAll('[data-target]').forEach(el=>cnOb.observe(el));
+/* COUNTERS */
+(()=>{
+  const ob=new IntersectionObserver(es=>es.forEach(e=>{
+    if(!e.isIntersecting)return;
+    const t=parseInt(e.target.dataset.target);if(!t)return;
+    let c=0;const step=Math.ceil(t/50);
+    const iv=setInterval(()=>{c=Math.min(c+step,t);e.target.textContent=c+'+';if(c>=t)clearInterval(iv)},20);
+    ob.unobserve(e.target);
+  }),{threshold:.5});
+  document.querySelectorAll('[data-target]').forEach(el=>ob.observe(el));
+})();
 
-// ── FORM ──
+/* FORM */
 function submitF(){
-  const n=document.getElementById('fn').value.trim(),p=document.getElementById('fp').value.trim(),em=document.getElementById('fe').value.trim();
-  if(!n||!p||!em){alert('Please fill in name, phone, and email.');return}
-  document.getElementById('cf-f').style.display='none';
-  document.getElementById('cf-ok').style.display='block';
+  const n=document.getElementById('fn').value.trim(),p=document.getElementById('fp').value.trim(),e=document.getElementById('fe').value.trim();
+  if(!n||!p||!e){alert('Please fill in your name, phone number and email address.');return}
+  document.getElementById('form-fields').style.display='none';
+  document.getElementById('form-ok').style.display='block';
 }
-
-// ── PARALLAX on hero headline ──
-window.addEventListener('scroll',()=>{
-  const y=scrollY;
-  const h=document.querySelector('.hero-headline');
-  if(h)h.style.transform=`translateY(${y*.3}px)`;
-  const vf=document.querySelector('.hero-visual-float');
-  if(vf)vf.style.transform=`translateY(calc(-50% + ${y*.15}px))`;
-});
 </script>
 </body>
 </html>
